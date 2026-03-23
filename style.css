@@ -393,3 +393,19 @@ body {
 .btn-cute-sm:active {
     transform: scale(0.95);
 }
+
+
+.music-btn {
+    background: var(--nana-pink);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+.music-btn:hover {
+    transform: scale(1.05);
+    background: var(--nana-blue);
+}
