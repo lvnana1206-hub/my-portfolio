@@ -1,83 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nana Lyu | Portfolio</title>
+    <title>吕娜娜 Nana | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body class="en-mode">
-    <div class="lang-switch-container"><button id="lang-btn">中文</button></div>
-    
-    <div class="orbs-container">
-        <div class="orb pink"></div><div class="orb blue"></div><div class="orb purple"></div>
-    </div>
+<body class="zh-mode">
+    <nav class="nav-bar">
+        <div class="logo">NANA.LYU</div>
+        <button id="lang-toggle">English Version</button>
+    </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1 id="hero-name">Nana Lyu (吕娜娜)</h1>
-            <p id="hero-title" class="tagline">AI Product Operations | User Growth | BD</p>
-            <p id="hero-desc">"I turn user insights into growth, and partnerships into scalable results."</p>
-            <div class="personal-tags">
-                <span class="tag">💡 Creative Problem Solver</span>
-                <span class="tag">🤝 Expert Negotiator</span>
-                <span class="tag">📊 Data Enthusiast</span>
+            <h1 id="name">吕娜娜 (Nana)</h1>
+            <p id="tagline" class="tagline">AI 产品运营 | 用户增长 | 商务拓展 (BD)</p>
+            <div class="personal-badges">
+                <span class="badge" data-key="badge1">💡 创新问题解决者</span>
+                <span class="badge" data-key="badge2">🤝 资深谈判专家</span>
+                <span class="badge" data-key="badge3">🌍 跨文化沟通者</span>
             </div>
         </div>
     </header>
 
     <section class="section">
-        <h2 class="section-title" id="skills-title">Skills Power Index</h2>
-        <div class="skill-container">
-            <div class="skill-bar-wrap"><label>Data Analysis (Python/R)</label><div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div></div>
-            <div class="skill-bar-wrap"><label>English (TEM-8) / French</label><div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div></div>
-            <div class="skill-bar-wrap"><label>B2B BD & Sales</label><div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div></div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title" id="project-title">AI & Data Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="icon">🤖</div>
-                <h3>Nana Insight AI</h3>
-                <p id="p1-desc">NLP User Insight Platform.</p>
-                <a href="https://nana-insight.streamlit.app/" target="_blank" class="btn">Demo 🔗</a>
+        <h2 class="section-title" id="title-skills">技能与核心竞争力</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3 id="h-lang">语言能力</h3>
+                <ul id="list-lang">
+                    <li><b>英语：</b>专业八级 (TEM-8)，精通商务书面及口语，胜任全英文工作环境。</li>
+                    <li><b>法语：</b>公共法语四级，具备良好的听说读写能力。</li>
+                </ul>
             </div>
-            <div class="card">
-                <div class="icon">📊</div>
-                <h3 id="p2-title">Vaccine Data Analysis</h3>
-                <p id="p2-desc">31,000+ entries sentiment mining.</p>
-                <a href="#" class="btn">View Case</a>
+            <div class="skill-card">
+                <h3 id="h-tech">专业技能</h3>
+                <p id="p-tech">Python (Pandas / NLTK / 文本分类 / TF-IDF)、R 语言 (tidytext / ggplot2)、数据可视化、统计建模 (多元回归)、Excel 高级分析。</p>
+            </div>
+            <div class="skill-card">
+                <h3 id="h-soft">通用软技能</h3>
+                <p id="p-soft">跨职能协同、B端资源拓展、用户洞察、社群运营 SOP 搭建、危机公关处理。</p>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title" id="intern-title">Professional Experience</h2>
-        <div class="intern-list">
-            <div class="intern-item">
-                <div class="intern-img"><img src="https://via.placeholder.com/400x200?text=Adream+Foundation+Activity" alt="Intern"></div>
-                <div class="intern-info">
-                    <h3 id="i1-title">Adream Foundation</h3>
-                    <p id="i1-desc">Connected 17 Fortune 500 companies.</p>
-                    <a href="https://mp.weixin.qq.com/s/tcCvXV9snGweWrD95YJyVA" target="_blank" class="text-link">Read Article ↗</a>
+    <section class="section grey-bg">
+        <h2 class="section-title" id="title-projects">核心项目经历</h2>
+        
+        <div class="project-item">
+            <div class="project-info">
+                <h3 id="p1-title">AI 用户洞察分析平台 (Nana Insight AI)</h3>
+                <p id="p1-desc" class="desc">“比用户更懂用户。” 这是一个严谨的 NLP 挖掘工具。通过 TF-IDF 算法处理 3.1w+ 评论，将非结构化吐槽转化为产品决策逻辑。</p>
+                <a href="https://nana-insight.streamlit.app/" target="_blank" class="btn">在线 Demo 🔗</a>
+            </div>
+            <div class="video-wrapper">
+                <div class="macbook-frame">
+                    <video autoplay muted loop playsinline>
+                        <source src="屏幕录制 2026-03-23 115044.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item reverse">
+            <div class="project-info">
+                <h3 id="p2-title">跨媒介叙事与情感分析系统 (R + NLP)</h3>
+                <p id="p2-desc">运用叙事学理论对《紫色》进行建模。通过 R 语言搭建自动化流水线，实现从“压抑”到“赋权”的分钟级量化追踪，为内容创作提供数据支撑。</p>
+                <div class="paper-links">
+                    <span id="label-papers">查看论文成果：</span>
+                    <a href="Nana 520141910007. digital humanities.pdf" target="_blank">Digital Humanities.pdf</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section school-section">
-        <h2 class="section-title" id="school-title">SJTU Life</h2>
-        <div class="school-card">
-            <p id="school-desc">🚀 18 Days, 18 Cities. Leading 1000+ volunteers to light up dreams.</p>
+    <section class="section">
+        <h2 class="section-title" id="title-media">交大思享公众号运营</h2>
+        <div class="wechat-grid">
+            <p id="media-desc">主理“交大思享”多个专栏，平均阅读量 5000+。擅长将深奥内容转化为高传播力的爆款推文。</p>
+            <div class="links-scroll">
+                <a href="https://mp.weixin.qq.com/s/uZGDhxeugj7MxgW0f1tbJg">专栏 A</a>
+                <a href="https://mp.weixin.qq.com/s/vNKEoXDd0CBnB1vrdNtF9A">专栏 B</a>
+                </div>
+        </div>
+    </section>
+
+    <section class="section grey-bg">
+        <h2 class="section-title" id="title-sjtu">SJTU Life (青春足迹)</h2>
+        <div class="sjtu-tabs">
+            <div class="tab-item">
+                <h4 id="tab-zf">助飞计划</h4>
+                <p id="desc-zf">18 天走访 18 城，带领 1000+ 志愿者，为新生送去希望。</p>
+            </div>
+            <div class="tab-item">
+                <h4 id="tab-cx">晨曦社</h4>
+                <p id="desc-cx">策划多项公益活动，统筹多方资源，获优秀社团称号。</p>
+            </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p id="footer-cta">"Let's build something great together!"</p>
-        <p>Email: lvnana1206@163.com</p>
+        <p id="footer-cta">期待与你一起创造有价值的产品与合作。</p>
+        <p>Email: lvnana1206@163.com | LinkedIn: Nana Lyu</p>
     </footer>
 
     <script src="script.js"></script>
