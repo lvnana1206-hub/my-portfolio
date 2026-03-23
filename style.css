@@ -1,12 +1,14 @@
-
-
-/* 基础设置 */
+/* --- Core Variables & Design System --- */
 :root {
-    --primary-gradient: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 100%); /* 粉蓝渐变 */
+    --primary-gradient: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 100%);
     --accent-purple: #9575cd;
     --soft-pink: #f06292;
     --text-color: #455a64;
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    --hover-shadow: 0 15px 40px rgba(149, 117, 205, 0.2);
 }
+
+* { box-sizing: border-box; }
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -15,10 +17,11 @@ body {
     background: #fdfdfd;
     line-height: 1.6;
     scroll-behavior: smooth;
+    transition: opacity 0.3s ease-out; /* Smooth fade for translation */
 }
 
-/* 语言切换按钮 */
-.lang-switch {
+/* --- Language Switching Button --- */
+.lang-switch-container {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -26,75 +29,188 @@ body {
 }
 
 #lang-btn {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid var(--accent-purple);
     background: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    cursor: pointer;
+    color: var(--accent-purple);
     font-weight: 600;
-    transition: 0.3s;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-/* Hero Section */
+#lang-btn:hover {
+    background: var(--accent-purple);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* --- Floating Orbs Background (The Fun Part) --- */
+.orbs-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.6;
+    animation: orb-float 15s ease-in-out infinite;
+}
+
+.orb.pink { width: 400px; height: 400px; background-color: #fce4ec; top: 10%; left: -10%; }
+.orb.blue { width: 350px; height: 350px; background-color: #e1f5fe; top: 60%; right: -5%; animation-delay: 2s; }
+.orb.purple { width: 250px; height: 250px; background-color: #d1c4e9; top: 30%; left: 40%; animation-delay: 4s; }
+
+.small .orb { filter: blur(30px); opacity: 0.4; animation-duration: 8s; }
+
+@keyframes orb-float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+/* --- Hero Section & Personal Tags --- */
 .hero {
-    height: 80vh;
-    background: var(--primary-gradient);
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    clip-path: ellipse(100% 80% at 50% 20%);
+    padding: 0 10%;
 }
 
-.hero h1 { font-size: 3.5rem; color: var(--accent-purple); margin-bottom: 10px; }
-.tagline { font-size: 1.5rem; font-weight: 300; color: var(--soft-pink); }
+.hero-content h1 { font-size: 3.8rem; font-weight: 800; color: var(--accent-purple); margin: 0; line-height: 1.1; }
+.tagline { font-size: 1.6rem; font-weight: 300; color: var(--soft-pink); margin-top: 10px; }
+#hero-desc { max-width: 600px; margin: 20px auto; font-size: 1.1rem; }
 
-/* 卡片设计 */
+.personal-tags { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; }
+.tag {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1.5px solid var(--accent-purple);
+    color: var(--accent-purple);
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    margin: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.tag:hover {
+    background: var(--accent-purple);
+    color: white;
+    transform: translateY(-5px) rotate(3deg); /* Playful rotate on hover */
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+
+/* --- Skills Visualization (Interactive Bars) --- */
+.skill-container { max-width: 700px; margin: 0 auto; padding: 0 10%; }
+.skill-bar-wrap label { font-weight: 600; color: var(--accent-purple); display: block; margin-bottom: 5px; }
+
+.bar-bg {
+    width: 100%; height: 16px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--soft-pink), var(--accent-purple));
+    border-radius: 10px;
+    width: 0%; /* Fills on scroll/load via animation */
+    transition: width 1.8s ease-out;
+}
+
+/* --- Projects & Experience Cards --- */
+.projects, .internships { padding: 80px 10%; }
+.section-title { text-align: center; font-size: 2.5rem; color: var(--accent-purple); margin-bottom: 50px; }
+
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 50px 10%;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
 }
 
 .card {
     background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s ease;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(149, 117, 205, 0.2);
+    transform: translateY(-12px);
+    box-shadow: var(--hover-shadow);
 }
 
-.card .icon { font-size: 3rem; margin-bottom: 15px; }
+.card-icon { font-size: 3.5rem; margin-bottom: 15px; }
 
-/* 按钮样式 */
-.btn {
-    padding: 12px 30px;
-    border-radius: 30px;
+/* Link Buttons in Cards */
+.link-btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 20px;
     text-decoration: none;
-    display: inline-block;
-    margin: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
     transition: 0.3s;
+    background: var(--accent-purple);
+    color: white;
+    margin-top: 15px;
 }
 
-.primary { background: var(--accent-purple); color: white; }
-.secondary { border: 2px solid var(--accent-purple); color: var(--accent-purple); }
+.link-btn:hover { background: var(--soft-pink); }
 
-/* 技能标签 */
-.skill-tags span {
-    background: #f1f8ff;
-    padding: 8px 15px;
-    border-radius: 15px;
-    margin: 5px;
-    display: inline-block;
-    color: #0366d6;
+/* --- Internships List & Published Article Links --- */
+.intern-list { max-width: 900px; margin: 0 auto; }
+.intern-item {
+    display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 50px;
+    background: white; padding: 25px; border-radius: 20px; box-shadow: var(--card-shadow);
+    align-items: center; transition: all 0.3s ease;
 }
 
-.section-title { text-align: center; margin-top: 60px; color: var(--accent-purple); }
+.intern-item:hover { box-shadow: var(--hover-shadow); }
+
+.intern-img { flex: 0 0 300px; border-radius: 15px; overflow: hidden; }
+.intern-img img { width: 100%; transition: transform 0.5s ease; }
+.intern-item:hover .intern-img img { transform: scale(1.08); }
+
+.intern-info { flex: 1; }
+.text-link { color: var(--soft-pink); text-decoration: none; font-weight: 600; }
+.text-link:hover { text-decoration: underline; }
+
+/* --- Contact & Footer --- */
+.contact-footer {
+    text-align: center; padding: 80px 10% 40px;
+    background: rgba(149, 117, 205, 0.03); margin-top: 80px; position: relative;
+}
+
+.footer-cta { font-size: 1.8rem; font-weight: 800; color: var(--accent-purple); margin-bottom: 25px; }
+.social-links a { color: var(--text-color); margin: 0 10px; font-weight: 600; text-decoration: none; }
+.social-links a:hover { color: var(--soft-pink); text-decoration: underline; }
+
+/* --- Global Transitions --- */
+.fade-in { animation: fadeIn 1s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* For translation fade */
+body.fade { opacity: 0; }
