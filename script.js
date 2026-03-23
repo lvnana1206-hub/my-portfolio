@@ -1,6 +1,7 @@
 /**
  * Nana's Portfolio Master Dynamic Script 🍭
  * 集成：背景音乐、SJTU 双学位背景、BCAR 实习结构、全项目翻译、滚动动画
+ * 状态：跨职能协同能手 (badge2) 已修正
  */
 
 // 1. 完整的中英文翻译配置
@@ -11,7 +12,7 @@ const translations = {
         heroName: "吕娜娜 Nana 🎀",
         heroTagline: "AI 产品运营 | 用户增长 | 内容策略",
         badge1: "🌈 创新问题解决者",
-        badge2: "🤝 跨职能协同能手",
+        badge2: "🤝 跨职能协同能手", 
         badge3: "📊 数据驱动决策",
         
         // 标题
@@ -64,55 +65,46 @@ const translations = {
         exp4Role: "内容运营",
         exp4Content: "<p><b>Background:</b> 将硬核科研动态转化为大众内容。</p><p><b>Action:</b> 建立转化漏斗，结构化数据进行降维解读。</p><p><b>Result:</b> ✅ 显著提升完读率，成功执行“大国重器”专题。</p>",
         
-        // 页脚
         footerText: "跟 Nana 一起探索 AI 的无限可能吧！🍭"
     },
     en: {
         langBtn: "切换至中文",
-        // Hero
         heroName: "Nana Lyu 🎀",
         heroTagline: "AI Product Operations | User Growth | Content Strategy",
         badge1: "🌈 Creative Solver",
         badge2: "🤝 Cross-functional Collaborator",
         badge3: "📊 Data-Driven",
         
-        // Titles
         titleEdu: "🎓 Education",
         titleSkills: "🌟 Core Competencies",
         titleProjects: "🚀 Key Projects",
         titleExp: "📅 Experience",
 
-        // Education
         eduSchool: "Shanghai Jiao Tong University (SJTU)",
         eduDegree: "Bachelor's | Double Major (2020-2025)",
         eduM1: "English Language & Literature",
         eduM2: "Administrative Management",
-        eduList: "<li>✨ Interdisciplinary: Global vision & organizational logic.</li><li>✨ Skills: TEM-8 (Test for English Majors-8) Certified.</li>",
+        eduList: "<li>✨ Interdisciplinary: Global vision & organizational logic.</li><li>✨ Skills: TEM-8 Certified.</li>",
 
-        // Skills
         s1Text: "NLP Insights / Prompt Engineering",
         s2Text: "Data Analytics (Python / R / SQL)",
         s3Text: "Content Strategy / SOP Optimization",
         s4Text: "English Proficiency (TEM-8)",
         
-        // Project 1
         p1Title: "AI User Insight Platform 🤖",
-        p1Desc: "<li><b>Full Workflow:</b> NLP analysis to visualization pipeline.</li><li><b>Recognition:</b> TF-IDF based sentiment analysis for CS.</li><li><b>Interaction:</b> Interactive dashboard built with Streamlit.</li>",
+        p1Desc: "<li><b>Full Workflow:</b> NLP analysis to visualization pipeline.</li><li><b>Recognition:</b> TF-IDF based sentiment analysis.</li>",
         
-        // Project 2
         p2Title: "Narrative & Sentiment Analysis 📚",
-        p2Desc: "<li><b>Modeling:</b> Deconstructed narratives comparing movie and novel.</li><li><b>Computing:</b> Built R-based sentiment pipelines (r=0.767).</li><li><b>Value:</b> Bridging literary criticism and Digital Humanities.</li>",
+        p2Desc: "<li><b>Modeling:</b> Deconstructed narratives comparing movie and novel.</li><li><b>Computing:</b> Built R-based sentiment pipelines (r=0.767).</li>",
         p2Btn1: "📄 Read Thesis (SJTU)",
         p2Btn2: "📊 View R-Report",
         
-        // Project 3
-        p3Title: "Vaccination Service Public Demand Analysis 💉",
-        p3Desc: "<li><b>NLP:</b> Processed 31k+ records with 92% classification accuracy.</li><li><b>Policy:</b> Quantitative assessment with 6 actionable suggestions.</li>",
+        p3Title: "Vaccination Service Analysis 💉",
+        p3Desc: "<li><b>NLP:</b> 31k+ records with 92% accuracy.</li><li><b>Policy:</b> 6 actionable suggestions delivered.</li>",
 
-        // Experience (BCAR)
         exp1Title: "SJTU Official Media 📝",
         exp1Role: "Head of Content Operations",
-        exp1Content: "<p><b>Background:</b> Managed campus media for 50k+ audience.</p><p><b>Action:</b> Applied 'Info-Priority' frameworks; led viral columns.</p><p><b>Result:</b> ✅ Produced multiple viral hits with 5,000+ views.</p>",
+        exp1Content: "<p><b>Background:</b> Managed campus media for 50k+ audience.</p><p><b>Action:</b> Applied 'Info-Priority' frameworks.</p><p><b>Result:</b> ✅ Multiple viral hits with 5,000+ views.</p>",
 
         exp2Title: "Adream Charitable Foundation 🕊️",
         exp2Role: "Project Operations",
@@ -132,15 +124,24 @@ const translations = {
 
 let currentLang = 'zh';
 
-// 2. 背景音乐逻辑
-function initMusic() {
-    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'); 
+// 2. 背景音乐逻辑 (融合版)
+function initBGM() {
+    // 自动检测路径：优先使用你代码中提到的 ./assets/bg-music.mp3，备用外部链接
+    const audio = new Audio('./assets/bg-music.mp3'); 
     audio.loop = true;
     audio.volume = 0.2;
-    // 浏览器要求用户点击后才能播放音乐
-    document.addEventListener('click', () => {
-        if (audio.paused) audio.play();
-    }, { once: true });
+
+    const startAudio = () => {
+        audio.play().then(() => {
+            document.removeEventListener('click', startAudio);
+            console.log("BGM Started!");
+        }).catch(err => {
+            // 如果本地文件加载失败，尝试备用地址
+            audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3';
+            audio.play();
+        });
+    };
+    document.addEventListener('click', startAudio);
 }
 
 // 3. 滚动动画检测
@@ -155,11 +156,11 @@ function handleReveal() {
     });
 }
 
-// 4. 核心内容更新函数
+// 4. 核心内容更新函数 (全量版)
 function updateContent() {
     const lang = translations[currentLang];
     
-    // 列表中的 ID 必须与 HTML 中的 ID 严格一致
+    // 包含所有需要更新的 ID，确保 badge2 在列
     const ids = [
         'lang-toggle', 'hero-name', 'hero-tagline', 'badge1', 'badge2', 'badge3',
         'title-edu', 'title-skills', 'title-projects', 'title-exp',
@@ -174,18 +175,19 @@ function updateContent() {
         const el = document.getElementById(id);
         if (!el) return;
         
-        // ID 转换逻辑 (如 s1-text -> s1Text)
+        // 驼峰转换逻辑
         let key = id.split('-').map((word, i) => i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)).join('');
         if (id === 'lang-toggle') key = 'langBtn';
+        // 针对 s1-text 这种特殊 ID 的处理
+        if (id.includes('-text')) key = id.replace('-text', 'Text');
         
         const content = lang[key];
         if (content) {
-            if (content.includes('<')) el.innerHTML = content;
-            else el.innerText = content;
+            el.innerHTML = content; // 使用 innerHTML 确保 HTML 标签和表情生效
         }
     });
 
-    // 自动处理 4 个实习经历
+    // 处理 4 个实习经历
     for (let i = 1; i <= 4; i++) {
         const t = document.getElementById(`exp${i}-title`);
         const r = document.getElementById(`exp${i}-role`);
@@ -199,84 +201,20 @@ function updateContent() {
     handleReveal(); 
 }
 
-// 5. 初始化运行
+// 5. 事件监听初始化
 document.addEventListener("DOMContentLoaded", () => {
-    initMusic();
+    initBGM();
     updateContent();
     
-    document.getElementById('lang-toggle').addEventListener('click', function() {
-        currentLang = currentLang === 'zh' ? 'en' : 'zh';
-        updateContent();
-        // 切换后平滑滚动到顶部，优化体验
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+        langBtn.addEventListener('click', function() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            updateContent();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
     
     window.addEventListener("scroll", handleReveal);
-});
-
-function initBGM() {
-    // 1. 定义音频路径
-    const audio = new Audio('./assets/bg-music.mp3'); 
-    
-    // 2. 配置属性
-    audio.loop = true;      // 循环播放
-    audio.volume = 0.2;     // 柔和音量 (20%)
-    
-    // 3. 创建触发函数
-    const startAudio = () => {
-        audio.play()
-            .then(() => {
-                // 成功播放后，移除监听，防止干扰其他交互
-                document.removeEventListener('click', startAudio);
-                console.log("BGM Started!");
-            })
-            .catch(err => console.log("等待用户交互以播放音频"));
-    };
-
-    // 4. 监听用户在页面上的任何点击
-    document.addEventListener('click', startAudio);
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    initBGM(); // 启动音乐逻辑
-    // ... 其他代码
-});
-let currentLang = 'zh';
-
-function updateContent() {
-    const lang = translations[currentLang];
-    
-    // 确保这个 ids 数组里包含 'badge2'
-    const ids = [
-        'lang-toggle', 'hero-name', 'hero-tagline', 
-        'badge1', 'badge2', 'badge3', 
-        'title-edu', 'title-skills', 'title-projects', 'title-exp',
-        'footer-text'
-    ];
-
-    ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        
-        // 自动转换 ID 到 Key (例如 badge2 对应 badge2)
-        let key = id.split('-').map((word, i) => i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)).join('');
-        if (id === 'lang-toggle') key = 'langBtn';
-        
-        const content = lang[key];
-        if (content) {
-            el.innerHTML = content; // 使用 innerHTML 确保表情符号正常显示
-        }
-    });
-
-    document.body.className = currentLang + '-mode';
-}
-
-// 初始化运行
-document.addEventListener("DOMContentLoaded", () => {
-    updateContent();
-    document.getElementById('lang-toggle').addEventListener('click', () => {
-        currentLang = currentLang === 'zh' ? 'en' : 'zh';
-        updateContent();
-    });
+    handleReveal();
 });
