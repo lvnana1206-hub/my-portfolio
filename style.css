@@ -1,6 +1,9 @@
+/* =========================================
+   Nana's Portfolio - Final Merged Style 🍭
+   状态：间距锁定、动画找回、代码去重
+   ========================================= */
 
-
-/* --- 1. 全局变量 (保持原样) --- */
+/* --- 1. 全局变量 (统一最高标准) --- */
 :root {
     --nana-pink: #ffdae9;
     --nana-blue: #d0e8ff;
@@ -28,7 +31,7 @@ body {
 .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
 .section { padding: 90px 0; }
 
-/* --- 2. Hero 间距深度修复 --- */
+/* --- 2. Hero 区域：联系方式与标签重叠彻底修复 --- */
 .hero { 
     text-align: center; 
     padding: 100px 0 60px 0; 
@@ -37,10 +40,21 @@ body {
     align-items: center;
 }
 
-/* 核心修复：建立一个块级区域专门放置联系方式 */
+#hero-name { font-size: 2.6rem; margin-bottom: 20px; color: var(--text-black); }
+
+#hero-tagline { 
+    font-size: 1.3rem; 
+    color: #3182CE; 
+    font-weight: 600;
+    margin-bottom: 30px; 
+    letter-spacing: 1px;
+}
+
+/* 核心修复：建立块级“物理隔离带” */
 .hero-contact-section {
     width: 100%;
-    margin: 40px 0 100px 0; /* 这里 80px 的 margin-bottom 是推开下方标签的关键 */
+    /* 100px 强制推开 Email 与 下方标签的距离 */
+    margin: 30px 0 100px 0; 
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -53,13 +67,12 @@ body {
     background: var(--white);
     padding: 12px 28px;
     border-radius: 50px;
-    box-shadow: 5px 5px 0px var(--nana-pink); /* 保持多巴胺阴影感 */
+    box-shadow: 8px 8px 0px var(--nana-pink); 
     border: 2px solid rgba(0,0,0,0.03);
     font-weight: 500;
     transition: 0.3s ease;
 }
 
-/* 标签组：创新问题解决者等 */
 .badge-group { 
     display: flex; 
     justify-content: center; 
@@ -78,77 +91,69 @@ body {
     box-shadow: 6px 6px 0px var(--nana-pink);
 }
 
-
-/* --- 3. 核心项目经历：电脑小窗动画 (样式加固) --- */
+/* --- 3. 项目经历：找回电脑小窗动画 --- */
 .project-item-v2 {
     display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-bottom: 100px;
 }
 
 .demo-window {
     flex: 1; min-width: 380px; 
-    background: #2d3748 !important; /* 强制深色背壳 */
-    border-radius: 20px; padding: 15px;
+    background: #2d3748 !important; /* 强制深色外壳 */
+    border-radius: 20px; padding: 18px;
     box-shadow: 18px 18px 0px var(--nana-blue); 
     border: 3px solid var(--white);
     overflow: hidden; 
-    transform: rotate(1.5deg); /* 倾斜效果保持 */
+    /* 倾斜动画回归 */
+    transform: rotate(1.5deg); 
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .demo-window:hover { 
-    transform: rotate(0deg) scale(1.04); 
+    transform: rotate(0deg) scale(1.05); 
     box-shadow: 20px 20px 0px var(--nana-pink);
 }
 
-/* 电脑控制按钮：红黄绿 */
-.window-controls { 
-    display: flex; gap: 8px; margin-bottom: 15px; align-items: center; 
-}
+.window-controls { display: flex; gap: 8px; margin-bottom: 15px; align-items: center; }
 .window-controls span { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 .dot-r { background: #ff5f56; } 
 .dot-y { background: #ffbd2e; } 
 .dot-g { background: #27c93f; }
-
 .window-label { color: #a0aec0; font-size: 12px; margin-left: 10px; font-family: monospace; }
 
-/* 视频/PDF 内部铺满 */
-.demo-window video, .demo-window iframe, .demo-window .pdf-preview { 
-    width: 100%; height: 300px; border-radius: 10px; display: block; background: white; border: none; 
+.demo-window video, .demo-window iframe { 
+    width: 100%; height: 320px; border-radius: 10px; display: block; background: white; border: none; 
 }
 
-/* --- 4. 实习经历 & 进度条 & 其他 (保持原样，不做任何删减) --- */
+/* --- 4. 实习经历 & 技能进度条 (保持原样) --- */
 .timeline-v2 { position: relative; padding-left: 70px; border-left: 6px dashed var(--nana-blue); margin: 60px 0; }
 .timeline-item-v2 { position: relative; margin-bottom: 140px; width: 100%; }
 .timeline-dot { position: absolute; left: -86px; top: 12px; width: 26px; height: 26px; background: var(--white); border-radius: 50%; border: 6px solid var(--nana-pink); z-index: 2; }
 .timeline-time { display: inline-block; background: var(--nana-blue); color: #2c5282; padding: 8px 22px; border-radius: 50px; font-weight: bold; margin-bottom: 25px; box-shadow: 4px 4px 0px rgba(208, 232, 255, 0.5); }
+
 .skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .progress-bar { width: 100%; height: 12px; background: #edf2f7; border-radius: 20px; overflow: hidden; margin-top: 15px; }
-.progress-fill { height: 100%; width: 0; transition: width 1.5s ease-in-out; }
+.progress-fill { height: 100%; width: 0; transition: width 1.5s cubic-bezier(0.1, 0.42, 0.41, 1); }
 .bar-pink { background: linear-gradient(90deg, #ffdae9, #f687b3); }
 .bar-blue { background: linear-gradient(90deg, #d0e8ff, #4299e1); }
 
-/* --- 5. 动画触发 Reveal --- */
+/* --- 5. SJTU 校园卡片 --- */
+.sjtu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+.tab-card {
+    background: white; padding: 35px; border-radius: var(--radius-md);
+    border-bottom: 8px solid var(--nana-pink);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.4s;
+}
+.tab-card:hover { transform: translateY(-12px); box-shadow: 15px 15px 0px var(--nana-blue); }
+
+/* --- 6. 滚动显现动画 --- */
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* --- 5. SJTU 校园卡片间距 --- */
-.sjtu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px; /* 保持两张卡片之间有足够的空隙 */
-}
-
-/* 移动端适配 */
-@media (max-width: 768px) {
-    .hero { padding: 80px 0 40px 0; }
-    .sjtu-grid { grid-template-columns: 1fr; gap: 25px; }
-    .timeline-item-v2 { margin-bottom: 80px; }
-}
-
-/* 响应式 */
+/* --- 7. 响应式适配 --- */
 @media (max-width: 768px) {
     .container { padding: 0 25px; }
     .hero { padding: 80px 0 40px 0; }
-    .skills-wrapper { grid-template-columns: 1fr; }
+    .hero-contact-section { margin-bottom: 60px; }
+    .skills-wrapper, .sjtu-grid { grid-template-columns: 1fr; }
     .demo-window { min-width: 100%; }
 }
