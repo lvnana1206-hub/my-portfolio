@@ -6,7 +6,7 @@ const translations = {
     zh: {
         langBtn: "English Version",
         heroName: "吕娜娜 (Nana) 🎀",
-        heroTagline: "AI 产品运营 | 用户增长 | 内容策略",
+        heroTagline: "AI 产品运营 | 海外商务 BD | 用户增长策略",
         badge1: "🌈 创新问题解决者",
         badge2: "🤝 跨职能协同能手", 
         badge3: "📊 数据驱动决策",
@@ -50,7 +50,7 @@ const translations = {
     en: {
         langBtn: "切换至中文",
         heroName: "Nana Lyu 🎀",
-        heroTagline: "AI Product Operations | Growth | Content Strategy",
+        heroTagline: "AI Product Operations | Internationaltional Business (BD) | Growth Strategy"",
         badge1: "🌈 Creative Solver",
         badge2: "🤝 Cross-functional Adept",
         badge3: "📊 Data-Driven",

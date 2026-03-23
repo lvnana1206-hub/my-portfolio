@@ -262,3 +262,99 @@ body {
 }
 
 .footer { text-align: center; padding: 50px 0; color: #a0aec0; font-size: 0.9rem; }
+/* =========================================
+   Nana's Portfolio - Final Corrected Style 🍭
+   ========================================= */
+
+:root {
+    --nana-pink: #ffdae9;
+    --nana-blue: #d0e8ff;
+    --nana-yellow: #fef3c7;
+    --dark-grey: #4a5568;
+    --text-black: #1a1a1a;
+    --white: #ffffff;
+    --bg-light: #f7faff;
+    --radius-md: 20px;
+}
+
+/* --- 1. 顶部 Hero 区域间距修正 --- */
+.hero { 
+    text-align: center; 
+    padding: 100px 0 60px 0; /* 增加顶部 padding，让头像不顶着导航栏 */
+}
+
+#hero-name {
+    margin-top: 25px; /* 增加头像和名字之间的距离 */
+    font-size: 2.2rem;
+}
+
+.tagline {
+    margin: 15px 0 25px 0; /* 增加求职方向上下间距 */
+    font-size: 1.2rem;
+    color: var(--dark-grey);
+    font-weight: 600;
+}
+
+.badge-group { 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; /* 增加标签之间的左右距离 */
+    margin-top: 30px; /* 增加标签组与上方文字的距离 */
+    flex-wrap: wrap; 
+}
+
+.badge { 
+    background: var(--nana-yellow); 
+    border: 1.5px solid var(--dark-grey); 
+    padding: 8px 20px; /* 增加标签内部呼吸感 */
+    border-radius: 50px; 
+    font-size: 0.9rem; 
+    font-weight: bold; 
+    box-shadow: 4px 4px 0px var(--nana-pink);
+}
+
+/* --- 2. 板块间距修正 --- */
+.section { 
+    padding: 80px 0; /* 统一板块垂直间距，既不拥挤也不过空 */
+}
+
+/* --- 3. 实习经历 (时间轴) 间距修正 --- */
+.timeline-item-v2 { 
+    position: relative; 
+    margin-bottom: 120px; /* 增加每一项实习之间的距离 */
+}
+
+.timeline-time {
+    margin-bottom: 25px; /* 增加日期和卡片之间的距离 */
+    display: inline-block;
+}
+
+/* --- 4. 技能进度条 --- */
+.progress-bar { 
+    width: 100%; 
+    height: 10px; 
+    background: #edf2f7; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    margin-top: 12px; /* 增加进度条和文字的距离 */
+}
+
+.progress-fill {
+    height: 100%; width: 0;
+    transition: width 1.5s cubic-bezier(0.1, 0.42, 0.41, 1);
+}
+.bar-pink { background: linear-gradient(90deg, #ffdae9, #f687b3); }
+
+/* --- 5. SJTU 校园卡片间距 --- */
+.sjtu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; /* 保持两张卡片之间有足够的空隙 */
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .hero { padding: 80px 0 40px 0; }
+    .sjtu-grid { grid-template-columns: 1fr; gap: 25px; }
+    .timeline-item-v2 { margin-bottom: 80px; }
+}
