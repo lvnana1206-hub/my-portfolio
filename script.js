@@ -132,38 +132,46 @@ function initBGM() {
     }
 }
 
-// 2. 滚动动画逻辑（带阈值检测）
+/// 2. 滚动动画逻辑（优化版：增加首屏强制显示逻辑）
 function handleReveal() {
     const reveals = document.querySelectorAll(".reveal");
+    const windowHeight = window.innerHeight;
+    
     reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
         const elementTop = el.getBoundingClientRect().top;
-        const revealPoint = 150; // 触发阈值
+        const revealPoint = 50; // 适当调低阈值，让显示更灵敏
 
+        // 如果元素已经进入视口，或者已经在视口上方（比如切语言时）
         if (elementTop < windowHeight - revealPoint) {
             el.classList.add("active");
         }
     });
 }
 
-// 3. 进度条动画重置逻辑
+// 3. 进度条重置（优化版：强制重绘触发动画）
 function resetProgressBars() {
     const progressFills = document.querySelectorAll('.progress-fill');
     progressFills.forEach(fill => {
-        // 先重置宽度为0，再根据 HTML 上的 style 恢复（触发 transition）
-        const targetWidth = fill.style.width;
+        // 使用 dataset 存储原始百分比，防止逻辑冲突
+        const originalWidth = fill.getAttribute('data-percentage') || fill.style.width;
+        if (!fill.getAttribute('data-percentage')) fill.setAttribute('data-percentage', originalWidth);
+        
+        fill.style.transition = 'none'; // 暂时关闭过渡
         fill.style.width = '0';
-        setTimeout(() => {
-            fill.style.width = targetWidth;
-        }, 100);
+        
+        // 强制浏览器重绘 (Reflow)
+        fill.offsetHeight; 
+        
+        fill.style.transition = 'width 1.2s ease-in-out'; // 恢复过渡
+        fill.style.width = originalWidth;
     });
 }
 
-// 4. 内容翻译更新核心引擎
+// 4. 内容翻译更新核心引擎（增强版）
 function updateContent() {
     const lang = translations[currentLang];
     
-    // 动态查找所有需要翻译的 ID
+    // 1. 批量更新 ID 内容
     const allIds = [
         'lang-toggle', 'hero-name', 'hero-tagline', 'badge1', 'badge2', 'badge3',
         'title-edu', 'title-skills', 'title-projects', 'title-exp',
@@ -180,33 +188,38 @@ function updateContent() {
         const el = document.getElementById(id);
         if (!el) return;
 
-        // ID 转换为驼峰 Key (例如: title-edu -> titleEdu)
         let key = id.split('-').map((word, i) => 
             i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
         ).join('');
         
-        // 特殊映射处理
         if (id === 'lang-toggle') key = 'langBtn';
         
+        // 只有当翻译词库里有这个 key 时才更新，防止把现有内容擦除
         if (lang[key]) {
-            // 使用 innerHTML 以支持翻译中的 <li> <b> 等标签
             el.innerHTML = lang[key];
         }
     });
 
-    // 技能条文本说明特殊处理 (s1-text, s2-text...)
+    // 2. 技能条特殊处理：使用更稳定的选择器
     for (let i = 1; i <= 4; i++) {
-        const sEl = document.querySelector(`.skill-item:nth-child(${i+1}) .skill-info span:first-child`);
-        if (sEl && lang[`s${i}Text`]) sEl.innerText = lang[`s${i}Text`];
+        // 尝试通过 ID 寻找，如果没有 ID，再用层级选择器
+        const sEl = document.getElementById(`s${i}-text`); 
+        if (sEl && lang[`s${i}Text`]) {
+            sEl.innerText = lang[`s${i}Text`];
+        }
     }
 
-    // 更新页面状态
+    // 3. 状态切换
     document.documentElement.lang = currentLang;
     document.body.className = currentLang + '-mode';
     
-    // 重新运行动画逻辑
-    resetProgressBars();
-    handleReveal();
+    // 4. 关键：等待 DOM 渲染完成后再触发动画计算
+    // requestAnimationFrame 会在浏览器下一次重绘前执行
+    requestAnimationFrame(() => {
+        resetProgressBars();
+        // 稍微延迟一下 handleReveal，确保高度已完全撑开
+        setTimeout(handleReveal, 50); 
+    });
 }
 
 // 5. 初始化挂载
@@ -230,3 +243,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // 初始触发一次检查，防止首屏元素不显示
     setTimeout(handleReveal, 500);
 });
+
