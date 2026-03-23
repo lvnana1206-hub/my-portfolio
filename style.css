@@ -17,6 +17,104 @@
     --bg-light: #f7faff;
 }
 
+/* --- 1. 导航栏：实现悬浮 & 重点标出 --- */
+.nav-bar {
+    position: fixed !important; /* 悬浮 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* 重点标出：增加粉色下边距和阴影 */
+    border-bottom: 3px solid var(--nana-pink) !important;
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+    padding: 12px 0;
+    display: flex !important;
+    visibility: visible !important;
+}
+
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo { 
+    font-weight: 800;
+    font-size: 1.4rem; 
+    color: #4A5568 !important; 
+    text-shadow: 2px 2px 0px var(--nana-pink);
+    margin-left: 20px;
+}
+
+.nav-links { display: flex; gap: 25px; margin-right: 20px; }
+.nav-links a { text-decoration: none; color: #4A5568; font-weight: 600; }
+
+/* --- 2. Hero 区域 & 联系方式间距修正 --- */
+.hero { 
+    text-align: center; 
+    padding: 150px 0 60px 0; /* 增加顶部 padding 防止被悬浮导航遮挡 */
+}
+
+.hero-contact-section {
+    display: flex; 
+    justify-content: center; 
+    gap: 15px;
+    /* 需求：联系方式和下面三个标签栏行距拉开 */
+    margin: 40px 0 110px 0 !important; 
+    flex-wrap: wrap;
+}
+
+.contact-item { 
+    background: white; padding: 12px 25px; border-radius: 50px; 
+    box-shadow: 8px 8px 0px var(--nana-pink); 
+    display: flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.badge-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.badge { 
+    background: var(--nana-yellow); 
+    border: 1.8px solid #4a5568; 
+    padding: 8px 22px; 
+    border-radius: 50px; 
+    font-weight: bold; 
+    box-shadow: 5px 5px 0px var(--nana-pink); 
+}
+
+/* --- 3. 校园经历间距缩小 --- */
+.timeline-v2 {
+    position: relative; 
+    padding-left: 70px;
+    border-left: 6px dashed var(--nana-blue); 
+    margin: 40px 0; 
+}
+
+.timeline-item-v2 { 
+    position: relative; 
+    /* 需求：间距少一点（从原先的 140px 缩减） */
+    margin-bottom: 65px !important; 
+    width: 100%; 
+}
+
+.timeline-dot {
+    position: absolute; left: -86px; top: 12px;
+    width: 26px; height: 26px; background: var(--white);
+    border-radius: 50%; border: 6px solid var(--nana-pink); z-index: 2;
+}
+
+.timeline-time {
+    display: inline-block; background: var(--nana-blue); color: #2c5282;
+    padding: 8px 22px; border-radius: 50px; font-weight: bold;
+    margin-bottom: 15px; 
+    box-shadow: 4px 4px 0px rgba(208, 232, 255, 0.5);
+}
+
 /* --- 1. 导航栏：暴力找回与锁定 (强制显示) --- */
 .nav-bar {
     position: fixed; 
