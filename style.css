@@ -1,29 +1,32 @@
 
-Nana，我看到问题所在了！
 
-即便在 CSS 里设置了很大的 margin-bottom，如果 HTML 结构中这些元素是“并列”关系且带有特定的浮动或绝对定位属性，它们依然会发生视觉重叠（就像你截图中 Email 块直接压在了标签上一样）。
-
-为了彻底解决行距重叠并确保电脑小窗动画正常显示，我优化了布局逻辑：通过一个专门的容器 .hero-contact-section 来强制隔离这两行，让它们在垂直方向上绝对无法相交。
-
-🛠️ 深度修复版 CSS (全量替换)
-CSS
-
-/* =========================================
-   Nana's Portfolio - Final Structural Fix 🍭
-   目标：彻底物理隔离重叠行、锁定电脑小窗动画
-   ========================================= */
-
-/* --- 1. 基础变量 (保持不变) --- */
+/* --- 1. 全局变量 (保持原样) --- */
 :root {
     --nana-pink: #ffdae9;
     --nana-blue: #d0e8ff;
     --nana-yellow: #fef3c7;
+    --nana-purple: #e9d8fd;
     --dark-grey: #4a5568;
     --text-black: #1a1a1a;
     --white: #ffffff;
     --bg-light: #f7faff;
+    --radius-md: 20px;
     --radius-lg: 35px;
 }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+    color: var(--dark-grey);
+    line-height: 1.8;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.section { padding: 90px 0; }
 
 /* --- 2. Hero 间距深度修复 --- */
 .hero { 
@@ -37,7 +40,7 @@ CSS
 /* 核心修复：建立一个块级区域专门放置联系方式 */
 .hero-contact-section {
     width: 100%;
-    margin: 40px 0 80px 0; /* 这里 80px 的 margin-bottom 是推开下方标签的关键 */
+    margin: 40px 0 100px 0; /* 这里 80px 的 margin-bottom 是推开下方标签的关键 */
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -50,7 +53,7 @@ CSS
     background: var(--white);
     padding: 12px 28px;
     border-radius: 50px;
-    box-shadow: 10px 10px 0px var(--nana-pink); /* 保持多巴胺阴影感 */
+    box-shadow: 5px 5px 0px var(--nana-pink); /* 保持多巴胺阴影感 */
     border: 2px solid rgba(0,0,0,0.03);
     font-weight: 500;
     transition: 0.3s ease;
@@ -127,6 +130,20 @@ CSS
 /* --- 5. 动画触发 Reveal --- */
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- 5. SJTU 校园卡片间距 --- */
+.sjtu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; /* 保持两张卡片之间有足够的空隙 */
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .hero { padding: 80px 0 40px 0; }
+    .sjtu-grid { grid-template-columns: 1fr; gap: 25px; }
+    .timeline-item-v2 { margin-bottom: 80px; }
+}
 
 /* 响应式 */
 @media (max-width: 768px) {
