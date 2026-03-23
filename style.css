@@ -1,80 +1,172 @@
 :root {
-    --bg-main: #f0f7ff;        /* 奶糖浅蓝底色 */
-    --accent-pink: #ffdae9;    /* 马卡龙粉 */
-    --accent-blue: #cceeff;
-    --text-dark: #445566;
+    --nana-pink: #ffdae9;    /* 少女粉 */
+    --nana-blue: #d0e8ff;    /* 奶糖蓝 */
+    --nana-yellow: #fef3c7;  /* 柠檬黄 */
+    --dark-grey: #4a5568;
     --white: #ffffff;
-    --radius: 25px;
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-dark);
+    background-color: #f7faff; /* 极浅蓝底色 */
+    font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+    color: var(--dark-grey);
     line-height: 1.8;
 }
 
-/* 增加间距 */
-.section { padding: 100px 0; }
-.container { max-width: 950px; margin: 0 auto; padding: 0 30px; }
+/* 增加呼吸感：每一项之间的间距 */
+.section { 
+    padding: 120px 0; 
+}
+.container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 0 40px; 
+}
 
-/* 头像活泼化 */
+/* 1. 头像：多层色彩边框辅佐 */
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
 .avatar {
-    width: 160px; height: 160px;
-    border-radius: 50px; /* 萌系圆角矩形 */
-    border: 6px solid var(--white);
-    box-shadow: 10px 10px 0px var(--accent-pink);
+    width: 180px; height: 180px;
+    border-radius: 40px;
+    border: 8px solid var(--white);
+    box-shadow: 
+        15px 15px 0px var(--nana-pink), 
+        -10px -10px 0px var(--nana-blue);
     object-fit: cover;
-}
-.photo-wrapper { position: relative; margin-bottom: 30px; }
-.floating-icon {
-    position: absolute; bottom: -10px; right: -20px; font-size: 2.5rem; animation: float 3s infinite ease-in-out;
+    z-index: 2;
+    position: relative;
 }
 
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-/* 技能卡片 */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.skill-card {
-    background: var(--white); padding: 35px; border-radius: var(--radius);
-    box-shadow: 8px 8px 0px var(--accent-blue); transition: 0.3s;
-}
-.skill-card:hover { transform: translateY(-5px); }
-
-/* 演示小框样式 */
-.project-item-v2 { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-top: 40px; }
+/* 2. 项目演示：录屏小窗化 (Window Frame) */
 .demo-window {
-    width: 320px; background: #333; border-radius: 15px; padding: 10px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); overflow: hidden;
+    flex: 1;
+    min-width: 320px;
+    background: #2d3748;
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 20px 20px 0px var(--nana-blue);
+    border: 4px solid var(--white);
 }
-.window-bar { display: flex; gap: 6px; margin-bottom: 8px; padding-left: 5px; }
-.window-bar span { width: 8px; height: 8px; border-radius: 50%; background: #ff5f56; }
-.window-bar span:nth-child(2) { background: #ffbd2e; }
-.window-bar span:nth-child(3) { background: #27c93f; }
-.demo-window video { width: 100%; border-radius: 8px; }
+.window-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-left: 5px;
+}
+.window-controls span {
+    width: 10px; height: 10px; border-radius: 50%;
+}
+.dot-r { background: #ff5f56; } .dot-y { background: #ffbd2e; } .dot-g { background: #27c93f; }
 
-/* 活泼的卡片与按钮 */
+.demo-window video {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+/* 3. 卡片活泼化：不再是简单的罗列 */
 .card-white {
-    background: var(--white); padding: 40px; border-radius: var(--radius);
-    box-shadow: 10px 10px 0px var(--accent-pink); margin-bottom: 20px;
+    background: var(--white);
+    padding: 50px;
+    border-radius: 35px;
+    box-shadow: 12px 12px 0px var(--nana-pink);
+    border: 2px solid #eee;
+    margin-bottom: 40px; /* 增加项与项之间的距离 */
+    transition: transform 0.3s ease;
 }
+.card-white:hover {
+    transform: rotate(-1deg) scale(1.02);
+}
+
+/* 技能标签可爱的标识 */
+.badge {
+    display: inline-block;
+    background: var(--nana-yellow);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin: 5px;
+    border: 2px solid var(--dark-grey);
+}
+
+/* 项目布局：左右排布增加动感 */
+.project-item-v2 {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* 按钮：Q弹感 */
 .btn-cute {
-    display: inline-block; padding: 12px 25px; background: var(--text-dark);
-    color: var(--white); border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 20px;
+    background: var(--dark-grey);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 5px 5px 0px var(--nana-pink);
+    margin-top: 20px;
 }
-.btn-file {
-    padding: 8px 18px; background: var(--accent-blue); border-radius: 15px;
-    text-decoration: none; color: #2c5282; font-size: 0.9rem; margin-right: 15px;
+/* --- 补全：年轻活泼的时间轴 (Timeline) --- */
+.timeline-v2 {
+    position: relative;
+    padding-left: 50px;
+    margin: 60px 0;
+    border-left: 5px dashed var(--nana-blue); /* 虚线比实线更活泼 */
 }
 
-/* 时间轴 */
-.timeline-v2 { border-left: 4px dashed var(--accent-pink); padding-left: 40px; margin-left: 20px; }
-.timeline-box { position: relative; margin-bottom: 60px; }
+.timeline-item-v2 {
+    position: relative;
+    margin-bottom: 80px; /* 每一项之间的巨大呼吸感 */
+}
+
+/* 时间轴上的可爱圆点 */
+.timeline-dot {
+    position: absolute;
+    left: -63px; /* 刚好压在虚线上 */
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background: var(--white);
+    border: 5px solid var(--nana-pink);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--nana-pink);
+    z-index: 2;
+}
+
 .timeline-time {
-    position: absolute; left: -110px; top: 10px;
-    font-weight: bold; color: var(--text-dark); background: var(--accent-blue);
-    padding: 2px 10px; border-radius: 10px;
+    display: inline-block;
+    background: var(--nana-blue);
+    color: #2c5282;
+    padding: 4px 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
 }
-.role-tag { color: var(--accent-pink); font-weight: bold; background: #fff0f5; display: inline-block; padding: 0 10px; border-radius: 5px; margin-bottom: 10px; }
 
-.mt-large { margin-top: 50px; }
-.bubble-bg { background: radial-gradient(circle, #ffffff 10%, transparent 10%); background-size: 30px 30px; }
+.role-tag {
+    display: inline-block;
+    color: var(--dark-grey);
+    background: var(--nana-yellow);
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* 之前缺失的容器修正 */
+.mt-large { margin-top: 80px; }
+
+/* 响应式调整：手机端间距也要够 */
+@media (max-width: 768px) {
+    .project-item-v2 { gap: 30px; }
+    .section { padding: 60px 0; }
+    .timeline-v2 { margin-left: 20px; }
+}
