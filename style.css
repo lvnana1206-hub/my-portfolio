@@ -175,21 +175,22 @@ body {
     color: var(--text-black); font-size: 0.9rem; border-radius: 50px; font-weight: bold;
 }
 
-/* --- 5. 滚动跳出动画 (Scroll-Reveal) --- */
-/* 初始隐藏状态 */
+/* --- 5. 滚动跳出动画 (修复版) --- */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px); /* 这里的位移不要太大，30px 足够了 */
-    transition: all 0.8s ease-out;
-    visibility: hidden;
+    opacity: 0 !important; /* 初始状态必须强制透明 */
+    visibility: hidden !important;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: transform, opacity; /* 优化动画性能 */
 }
 
 /* 激活显示状态 */
 .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
 }
+
 /* --- 6. 核心项目经历 --- */
 .section-title {
     text-align: center; font-size: 2.2rem; color: var(--text-black); margin-bottom: 80px;

@@ -1,6 +1,7 @@
 /**
  * Nana's Portfolio Master Dynamic Script 🍭
  * 集成：多级背景音乐控制、智能语言切换、全量内容动态映射、进度条重载
+ * 修复：数组语法错误、联系方式同步、动画触发增强
  */
 
 const translations = {
@@ -45,7 +46,7 @@ const translations = {
         exp4Role: "内容运营",
         exp4Content: "<p>🔍 将复杂科研信息结构化，应用“信息前置”模板提升完读率。</p>",
         contactEmail: "lvnana1206@163.com",
-        contactPhone: "联系电话: +86 153-3931-4431",
+        contactPhone: "+86 153-3931-4431", // 更新后的手机号
         footerText: "跟 Nana 一起探索 AI 的无限可能吧！🍭"
     },
     en: {
@@ -89,7 +90,7 @@ const translations = {
         exp4Role: "Content Operations",
         exp4Content: "<p>Structured complex research data into multi-media content.</p>",
         contactEmail: "lvnana1206@163.com",
-        contactPhone: "Phone: +86 153-3931-4431",
+        contactPhone: "+86 153-3931-4431",
         footerText: "Explore the future of AI with Nana! 🍭"
     }
 };
@@ -97,7 +98,7 @@ const translations = {
 let currentLang = 'zh';
 let audio;
 
-// 1. 初始化背景音乐逻辑
+// 1. 初始化背景音乐
 function initBGM() {
     audio = new Audio('./assets/bg-music.mp3'); 
     audio.loop = true;
@@ -105,89 +106,78 @@ function initBGM() {
 
     const musicBtn = document.getElementById('music-toggle');
 
-    // 处理浏览器自动播放策略
     const startAudioOnFirstClick = () => {
         const playPromise = audio.play();
         if (playPromise !== undefined) {
             playPromise.then(() => {
                 if (musicBtn) musicBtn.innerText = "🎵 On";
                 document.removeEventListener('click', startAudioOnFirstClick);
-            }).catch(error => {
-                console.log("Audio play blocked by browser. Awaiting interaction.");
-            });
+            }).catch(error => console.log("Audio play blocked."));
         }
     };
     document.addEventListener('click', startAudioOnFirstClick);
 
-    // 绑定切换按钮
     if (musicBtn) {
         musicBtn.addEventListener('click', (e) => {
             e.stopPropagation(); 
             if (audio.paused) {
                 audio.play();
                 musicBtn.innerText = "🎵 On";
-                musicBtn.style.background = "#FFB6C1"; // 激活色
+                musicBtn.style.background = "#FFB6C1";
             } else {
                 audio.pause();
                 musicBtn.innerText = "🔇 Off";
-                musicBtn.style.background = "#FFF0F3"; // 默认色
+                musicBtn.style.background = "#FFF0F3";
             }
         });
     }
 }
 
-/// 2. 滚动动画逻辑（优化版：增加首屏强制显示逻辑）
+// 2. 滚动动画逻辑
 function handleReveal() {
     const reveals = document.querySelectorAll(".reveal");
     const windowHeight = window.innerHeight;
     
     reveals.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
-        const revealPoint = 50; // 适当调低阈值，让显示更灵敏
-
-        // 如果元素已经进入视口，或者已经在视口上方（比如切语言时）
+        const revealPoint = 50; 
         if (elementTop < windowHeight - revealPoint) {
             el.classList.add("active");
         }
     });
 }
 
-// 3. 进度条重置（优化版：强制重绘触发动画）
+// 3. 进度条重置
 function resetProgressBars() {
     const progressFills = document.querySelectorAll('.progress-fill');
     progressFills.forEach(fill => {
-        // 使用 dataset 存储原始百分比，防止逻辑冲突
         const originalWidth = fill.getAttribute('data-percentage') || fill.style.width;
         if (!fill.getAttribute('data-percentage')) fill.setAttribute('data-percentage', originalWidth);
         
-        fill.style.transition = 'none'; // 暂时关闭过渡
+        fill.style.transition = 'none';
         fill.style.width = '0';
+        fill.offsetHeight; // 强制重绘
         
-        // 强制浏览器重绘 (Reflow)
-        fill.offsetHeight; 
-        
-        fill.style.transition = 'width 1.2s ease-in-out'; // 恢复过渡
+        fill.style.transition = 'width 1.2s ease-in-out';
         fill.style.width = originalWidth;
     });
 }
 
-// 4. 内容翻译更新核心引擎（增强版）
+// 4. 内容翻译更新
 function updateContent() {
     const lang = translations[currentLang];
     
-    // 1. 批量更新 ID 内容
+    // 注意：已修复 exp4-content 后的逗号缺失问题
     const allIds = [
         'lang-toggle', 'hero-name', 'hero-tagline', 'badge1', 'badge2', 'badge3',
         'title-edu', 'title-skills', 'title-projects', 'title-exp',
         'edu-school', 'edu-degree', 'edu-m1', 'edu-m2', 'edu-list',
         'p1-title', 'p1-desc', 'p2-title', 'p2-desc', 'p2-btn1', 'p2-btn2',
-        'p3-title', 'footer-text',
-        'exp1-title', 'exp1-role', 'exp1-content',
+        'p3-title', 'exp1-title', 'exp1-role', 'exp1-content',
         'exp2-title', 'exp2-role', 'exp2-content',
         'exp3-title', 'exp3-role', 'exp3-content',
-        'exp4-title', 'exp4-role', 'exp4-content'
-        'contact-email', 'contact-phone', 
-        'footer-text'
+        'exp4-title', 'exp4-role', 'exp4-content',
+        'contact-email', 'contact-phone', 'footer-text'
     ];
 
     allIds.forEach(id => {
@@ -200,62 +190,17 @@ function updateContent() {
         
         if (id === 'lang-toggle') key = 'langBtn';
         
-        // 只有当翻译词库里有这个 key 时才更新，防止把现有内容擦除
         if (lang[key]) {
             el.innerHTML = lang[key];
         }
     });
 
-    // 2. 技能条特殊处理：使用更稳定的选择器
+    // 处理技能条文字
     for (let i = 1; i <= 4; i++) {
-        // 尝试通过 ID 寻找，如果没有 ID，再用层级选择器
         const sEl = document.getElementById(`s${i}-text`); 
         if (sEl && lang[`s${i}Text`]) {
             sEl.innerText = lang[`s${i}Text`];
         }
     }
 
-    // 3. 状态切换
-    document.documentElement.lang = currentLang;
-    document.body.className = currentLang + '-mode';
-    
-    // 4. 关键：等待 DOM 渲染完成后再触发动画计算
-    // requestAnimationFrame 会在浏览器下一次重绘前执行
-    requestAnimationFrame(() => {
-        resetProgressBars();
-        // 稍微延迟一下 handleReveal，确保高度已完全撑开
-        setTimeout(handleReveal, 50); 
-    });
-}
-
-// 5. 初始化挂载
-document.addEventListener("DOMContentLoaded", () => {
-    initBGM();
-    updateContent(); // 初始加载
-    
-    const langBtn = document.getElementById('lang-toggle');
-    if (langBtn) {
-        langBtn.onclick = () => {
-            currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            updateContent();
-            // 切换语言后平滑回顶，给用户全新的感觉
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-    }
-
-    // 监听滚动
-    window.addEventListener("scroll", handleReveal);
-    
-    // 初始触发一次检查，防止首屏元素不显示
-    setTimeout(handleReveal, 500);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    updateContent(); // 先更新翻译
-    
-    // 关键：延迟 150ms 强制触发一次，确保 DOM 已经渲染完毕再计算位置
-    setTimeout(() => {
-        handleReveal(); 
-        console.log("Animation triggered!"); // 可以在控制台看到是否运行
-    }, 150);
-});
+    document.documentElement.lang = currentLang
