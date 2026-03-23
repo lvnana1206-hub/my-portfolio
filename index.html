@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nana Lyu | Portfolio v2.0</title>
+    <title>Nana Lyu | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body class="en-mode">
-    <div class="lang-switch-container">
-        <button id="lang-btn">中文</button>
-    </div>
-
+    <div class="lang-switch-container"><button id="lang-btn">中文</button></div>
+    
     <div class="orbs-container">
-        <div class="orb pink"></div>
-        <div class="orb blue"></div>
-        <div class="orb purple"></div>
+        <div class="orb pink"></div><div class="orb blue"></div><div class="orb purple"></div>
     </div>
 
     <header class="hero">
-        <div class="hero-content fade-in">
+        <div class="hero-content">
             <h1 id="hero-name">Nana Lyu (吕娜娜)</h1>
             <p id="hero-title" class="tagline">AI Product Operations | User Growth | BD</p>
             <p id="hero-desc">"I turn user insights into growth, and partnerships into scalable results."</p>
@@ -27,81 +23,63 @@
                 <span class="tag">💡 Creative Problem Solver</span>
                 <span class="tag">🤝 Expert Negotiator</span>
                 <span class="tag">📊 Data Enthusiast</span>
-                <span class="tag">🌍 Intercultural Navigator</span>
             </div>
         </div>
     </header>
 
-    <section class="skills-viz section">
-        <h2 class="section-title" id="skills-viz-title">Skills & Power Index</h2>
+    <section class="section">
+        <h2 class="section-title" id="skills-title">Skills Power Index</h2>
         <div class="skill-container">
-            <div class="skill-bar-wrap">
-                <label>Data Analysis (Python/R)</label>
-                <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
-            </div>
-            <div class="skill-bar-wrap">
-                <label>AI & NLP Modeling (Sentiment)</label>
-                <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
-            </div>
-            <div class="skill-bar-wrap">
-                <label>English (TEM-8) / French</label>
-                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-            </div>
-            <div class="skill-bar-wrap">
-                <label>B2B BD & Negotiation</label>
-                <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
-            </div>
+            <div class="skill-bar-wrap"><label>Data Analysis (Python/R)</label><div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div></div>
+            <div class="skill-bar-wrap"><label>English (TEM-8) / French</label><div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div></div>
+            <div class="skill-bar-wrap"><label>B2B BD & Sales</label><div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div></div>
         </div>
     </section>
 
-    <section id="projects" class="projects section">
+    <section class="section">
         <h2 class="section-title" id="project-title">AI & Data Projects</h2>
-        <div class="project-grid">
-            <div class="card project-card">
-                <div class="card-icon">🤖</div>
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🤖</div>
                 <h3>Nana Insight AI</h3>
-                <p id="p-insight-desc">NLP-based User Voice Analysis Platform (Python/Streamlit). 📊 Analyzed 3.1w+ user entries.</p>
-                <a href="https://nana-insight.streamlit.app/" target="_blank" class="link-btn">Demo 🔗</a>
+                <p id="p1-desc">NLP User Insight Platform.</p>
+                <a href="https://nana-insight.streamlit.app/" target="_blank" class="btn">Demo 🔗</a>
             </div>
-            <div class="card project-card">
-                <div class="card-icon">📖</div>
-                <h3 id="p-narrative-title">Intercultural Narrative Analysis</h3>
-                <p id="p-narrative-desc">Quantifying literary structure using Digital Humanities methods (R). ✒️ Narratology modeling.</p>
-                <a href="#" class="link-btn">Report (Demo)</a>
+            <div class="card">
+                <div class="icon">📊</div>
+                <h3 id="p2-title">Vaccine Data Analysis</h3>
+                <p id="p2-desc">31,000+ entries sentiment mining.</p>
+                <a href="#" class="btn">View Case</a>
             </div>
         </div>
     </section>
 
-    <section id="internships" class="internships section">
-        <h2 class="section-title" id="intern-title">Professional Experience (Internships)</h2>
+    <section class="section">
+        <h2 class="section-title" id="intern-title">Professional Experience</h2>
         <div class="intern-list">
             <div class="intern-item">
-                <div class="intern-img">
-                    <img src="https://via.placeholder.com/300x150?text=Adream+Foundation" alt="Adream Foundation">
-                </div>
+                <div class="intern-img"><img src="https://via.placeholder.com/400x200?text=Adream+Foundation+Activity" alt="Intern"></div>
                 <div class="intern-info">
-                    <h3 id="intern1-name">Shanghai Adream Charitable Foundation</h3>
-                    <p id="intern1-desc">BD & Operations: Connected 17 Fortune 500 companies (Lenovo, Schneider) for educational programs.</p>
-                    <a href="https://mp.weixin.qq.com/s/tcCvXV9snGweWrD95YJyVA" target="_blank" class="text-link">View Published Article ↗</a>
-                </div>
-            </div>
-            <div class="intern-item">
-                <div class="intern-img">
-                    <img src="https://via.placeholder.com/300x150?text=XYZ+Robotics" alt="XYZ Robotics">
-                </div>
-                <div class="intern-info">
-                    <h3 id="intern2-name">XYZ Robotics (Government Liaison) ToB/ToG BD</h3>
-                    <p id="intern2-desc">Cross-functional BD coordination; obtained critical policy certifications with 100% success rate.</p>
+                    <h3 id="i1-title">Adream Foundation</h3>
+                    <p id="i1-desc">Connected 17 Fortune 500 companies.</p>
+                    <a href="https://mp.weixin.qq.com/s/tcCvXV9snGweWrD95YJyVA" target="_blank" class="text-link">Read Article ↗</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="contact-footer section">
-        <div class="orbs-container small">
-            <div class="orb purple"></div>
-            <div class="orb pink"></div>
+    <section class="section school-section">
+        <h2 class="section-title" id="school-title">SJTU Life</h2>
+        <div class="school-card">
+            <p id="school-desc">🚀 18 Days, 18 Cities. Leading 1000+ volunteers to light up dreams.</p>
         </div>
-        <p id="footer-cta" class="footer-cta">"Let’s build scalable and meaningful products together."</p>
-        <div class="social-links">
-            <a href="mailto:lvnana1206@163.com">Email</a> | <a href
+    </section>
+
+    <footer class="footer">
+        <p id="footer-cta">"Let's build something great together!"</p>
+        <p>Email: lvnana1206@163.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
