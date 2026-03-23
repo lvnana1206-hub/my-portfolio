@@ -1,11 +1,4 @@
 
-
-/* =========================================
-   Nana's Portfolio - Ultimate Completion 🍭
-   状态：全量保留原始代码 + 暴力补全缺失组件
-   ========================================= */
-
-/* --- [以下是你提供的原始代码，分毫不动] --- */
 :root {
     --nana-pink: #ffdae9;
     --nana-blue: #d0e8ff;
@@ -154,7 +147,42 @@ body {
 .reveal.active .progress-fill {
     /* 注意：具体百分比需要在 HTML 标签里写 style="width: 90%" */
 }
+/* --- 2. Hero 间距彻底修复 (杜绝重叠) --- */
+.hero { 
+    text-align: center; 
+    padding: 100px 0 60px 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#hero-tagline { 
+    font-size: 1.3rem; 
+    color: #3182CE; 
+    font-weight: 600;
+    margin-bottom: 30px; 
+    letter-spacing: 1px;
+}
+
+/* 核心修复：为联系方式建立专属包裹层，拉开垂直间距 */
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 70px; /* 关键：强制推开与下方标签云的距离，彻底解决重叠 */
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    background: #ffffff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    box-shadow: 8px 8px 0px var(--nana-pink);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.badge-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.badge { background: var(--nana-yellow); border: 1.8px solid #4a5568; padding: 8px 22px; border-radius: 50px; font-weight: bold; box-shadow: 5px 5px 0px var(--nana-pink); }
 /* 2. 响应式补全 (确保移动端也好看) */
 @media (max-width: 768px) {
     .hero-contact-section { margin-bottom: 60px; }
