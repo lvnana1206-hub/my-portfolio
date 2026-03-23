@@ -429,3 +429,14 @@ body {
 }
 
 .footer p { margin-bottom: 10px; color: #a0aec0; }
+
+.project-item-v2, .timeline-content {
+    min-height: fit-content; /* 强制容器根据内容撑开高度 */
+    overflow: visible;      /* 确保内容不会被裁切 */
+}
+
+.reveal {
+    /* 如果不想让位移太剧动，可以减小 transform 的值 */
+    transform: translateY(20px); 
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}

@@ -250,3 +250,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(handleReveal, 500);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    updateContent(); // 先更新翻译
+    
+    // 关键：延迟 150ms 强制触发一次，确保 DOM 已经渲染完毕再计算位置
+    setTimeout(() => {
+        handleReveal(); 
+        console.log("Animation triggered!"); // 可以在控制台看到是否运行
+    }, 150);
+});
