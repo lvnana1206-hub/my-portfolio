@@ -186,3 +186,40 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('scroll', handleReveal);
     handleReveal(); // 检查初始位置
 });
+
+
+// 进度条重新跑动画的函数
+function resetProgressBars() {
+    const progressFills = document.querySelectorAll('.progress-fill');
+    progressFills.forEach(fill => {
+        // 抓取 HTML 中设置的初始宽度作为目标
+        const targetWidth = fill.getAttribute('data-target-width') || fill.style.width;
+        if (targetWidth) {
+            fill.setAttribute('data-target-width', targetWidth); // 备份
+            fill.style.transition = 'none'; // 暂时关闭过渡
+            fill.style.width = '0'; // 归零
+            fill.offsetHeight; // 强制重绘
+            fill.style.transition = 'width 1.5s cubic-bezier(0.1, 0.42, 0.41, 1)'; // 恢复过渡
+            fill.style.width = targetWidth; // 赋予目标宽度
+        }
+    });
+}
+
+// 监听滚动，当进入视口时触发 reveal 效果和进度条
+function handleReveal() {
+    const reveals = document.querySelectorAll(".reveal");
+    reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+            if (!el.classList.contains('active')) {
+                el.classList.add("active");
+                // 如果是技能区域，额外触发进度条跑动
+                if (el.querySelector('.progress-fill')) {
+                    resetProgressBars();
+                }
+            }
+        }
+    });
+}
+
+window.addEventListener('scroll', handleReveal);
