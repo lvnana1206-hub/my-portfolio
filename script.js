@@ -95,25 +95,31 @@ let audio;
 
 // 1. 初始化背景音乐
 function initBGM() {
+    // 确保路径指向 assets 库
     audio = new Audio('./assets/bg-music.mp3'); 
     audio.loop = true;
     audio.volume = 0.2;
 
     const musicBtn = document.getElementById('music-toggle');
 
-    // 监听全局第一次点击以启动播放
+    // 监听全局第一次点击以启动播放（解决浏览器自动播放限制）
     const startAudioOnFirstClick = () => {
         audio.play().then(() => {
-            musicBtn.innerText = "🎵 On";
+            if (musicBtn) musicBtn.innerText = "🎵 On";
+            // 成功播放后移除全局监听，避免重复触发
             document.removeEventListener('click', startAudioOnFirstClick);
-        }).catch(e => console.log("等待交互..."));
+        }).catch(e => {
+            console.log("等待用户交互以播放音乐...");
+        });
     };
     document.addEventListener('click', startAudioOnFirstClick);
 
     // 绑定暂停/播放键
     if (musicBtn) {
         musicBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // 防止触发全局点击
+            // 极其重要：阻止事件冒泡，否则会触发上面的 startAudioOnFirstClick 或其他全局点击逻辑
+            e.stopPropagation(); 
+            
             if (audio.paused) {
                 audio.play();
                 musicBtn.innerText = "🎵 On";
@@ -124,6 +130,8 @@ function initBGM() {
         });
     }
 }
+
+
 
 // 2. 滚动动画逻辑
 function handleReveal() {
