@@ -11,7 +11,7 @@ const translations = {
         heroName: "吕娜娜 Nana 🎀",
         heroTagline: "AI 产品运营 | 用户增长 | 内容策略",
         badge1: "🌈 创新问题解决者",
-        badge2: "🤝 跨职能协同专家",
+        badge2: "🤝 跨职能协同能手",
         badge3: "📊 数据驱动决策",
         
         // 标题
