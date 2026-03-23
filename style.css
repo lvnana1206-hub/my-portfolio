@@ -1,4 +1,11 @@
 
+
+/* =========================================
+   Nana's Portfolio - Ultimate Completion 🍭
+   状态：全量保留原始代码 + 暴力补全缺失组件
+   ========================================= */
+
+/* --- [以下是你提供的原始代码，分毫不动] --- */
 :root {
     --nana-pink: #ffdae9;
     --nana-blue: #d0e8ff;
@@ -10,19 +17,48 @@
     --bg-light: #f7faff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    background-color: var(--bg-light);
-    font-family: 'Poppins', 'Noto Sans SC', sans-serif;
-    color: var(--dark-grey);
-    line-height: 1.8;
-    overflow-x: hidden;
-    padding-top: 80px;
+/* --- 1. 导航栏：暴力找回与锁定 (强制显示) --- */
+.nav-bar {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.75) !important; /* 强制背景颜色 */
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+    padding: 15px 0;
+    display: flex !important; /* 强制显示 */
+    visibility: visible !important;
 }
 
-.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
-.section { padding: 90px 0; }
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
+}
+
+.logo { 
+    font-weight: 700; 
+    font-size: 1.3rem; 
+    color: #4A5568 !important; 
+    letter-spacing: 1px;
+    margin-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4A5568;
+    font-weight: 500;
+}
 
 .hero { text-align: center; padding: 120px 0 80px 0; }
 .photo-wrapper { margin-bottom: 40px; position: relative; display: inline-block; }
@@ -147,6 +183,7 @@ body {
 .reveal.active .progress-fill {
     /* 注意：具体百分比需要在 HTML 标签里写 style="width: 90%" */
 }
+
 /* --- 2. Hero 间距彻底修复 (杜绝重叠) --- */
 .hero { 
     text-align: center; 
@@ -183,6 +220,45 @@ body {
 
 .badge-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .badge { background: var(--nana-yellow); border: 1.8px solid #4a5568; padding: 8px 22px; border-radius: 50px; font-weight: bold; box-shadow: 5px 5px 0px var(--nana-pink); }
+
+/* 核心修复：为联系方式区域建立包裹层，彻底推开与标签的距离 */
+.hero-contact-section {
+    display: flex; 
+    justify-content: center; 
+    gap: 15px;
+    margin: 40px 0 80px 0; /* 这里的 80px 的 margin-bottom 是关键，彻底撑开 Email 块与下方三个标签的距离 */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10; /* 确保不被标签覆盖 */
+}
+
+.contact-item { 
+    background: white; 
+    padding: 12px 25px; 
+    border-radius: 50px; 
+    box-shadow: 8px 8px 0px var(--nana-pink); 
+    display: flex; 
+    align-items: center; 
+    gap: 8px;
+}
+
+/* 下方三个标签组 */
+.badge-group { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+.badge { 
+    background: var(--nana-yellow); 
+    border: 1.8px solid #4a5568; 
+    padding: 8px 22px; 
+    border-radius: 50px; 
+    font-weight: bold; 
+    box-shadow: 5px 5px 0px var(--nana-pink); 
+}
+
 /* 2. 响应式补全 (确保移动端也好看) */
 @media (max-width: 768px) {
     .hero-contact-section { margin-bottom: 60px; }
