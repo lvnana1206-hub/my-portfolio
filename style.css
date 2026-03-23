@@ -1,194 +1,60 @@
 
-/* =========================================
-   Nana's Portfolio - Dopamine & Reveal Style 🍭
-   Q弹、多巴胺、大呼吸感、拒绝死板！
-   ========================================= */
-
-/* --- 1. 全局多巴胺变量 --- */
-:root {
-    --nana-pink: #ffdae9;    /* 少女粉 */
-    --nana-blue: #d0e8ff;    /* 奶糖蓝 */
-    --nana-yellow: #fef3c7;  /* 柠檬黄 */
-    --nana-purple: #e9d8fd;  /* 薰衣草紫 */
-    --dark-grey: #4a5568;
-    --text-black: #1a1a1a;
-    --white: #ffffff;
-    --bg-light: #f7faff;   /* 极浅蓝糖色背景 */
-    --radius-md: 25px;
-    --radius-lg: 35px;
-    --radius-avatar: 45px; /* 这里决定了圆角矩形的弧度 */
-}
-
-/* --- 2. 布局与呼吸感 (大间距) --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    background-color: var(--bg-light);
-    font-family: 'Poppins', 'Noto Sans SC', sans-serif;
-    color: var(--dark-grey);
-    line-height: 1.8;
-    overflow-x: hidden; /* 防止滚动动画导致横向溢出 */
-    padding-top: 70px; /* 为固定导航栏留出空间 */
-}
-
-.container { max-width: 1050px; margin: 0 auto; padding: 0 40px; }
-
-/* 核心：解决每一项之间的间距窄的问题 - 呼吸感回归！ */
-.section { padding: 120px 0; }
-.grey-bg { background-color: #eef2f6; }
-
-/* --- 3. 导航栏 (整合毛玻璃与 Q 弹按钮) --- */
-.nav-bar {
-    position: fixed; top: 0; width: 100%; z-index: 1000;
-    background: rgba(255, 255, 255, 0.7); /* 半透明白 */
-    backdrop-filter: blur(10px); /* 毛玻璃核心 */
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 182, 193, 0.2);
-    padding: 15px 0; transition: all 0.3s ease;
-}
-
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-.logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 2px; color: #4A5568; }
-
-.lang-btn {
-    background: #EBF8FF; color: #3182CE; border: 1px solid #BEE3F8;
-    padding: 8px 18px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.3s ease;
-}
-.lang-btn:hover { background: #3182CE; color: white; transform: scale(1.05); }
-
-/* --- 4. Hero 区域 --- */
-.hero { text-align: center; padding: 100px 0; background: linear-gradient(135deg, #ffffff 0%, #f7faff 100%); }
-.photo-wrapper { position: relative; display: inline-block; margin-bottom: 40px; }
-.avatar {
-    width: 180px; height: 180px; border-radius: var(--radius-avatar);
-    border: 8px solid var(--white);
-    box-shadow: 15px 15px 0px var(--nana-pink), -12px -12px 0px var(--nana-blue);
-    object-fit: cover; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.avatar:hover { transform: scale(1.05) rotate(3deg); }
-.floating-icon { position: absolute; top: -10px; right: -10px; font-size: 2rem; animation: floating 3s ease-in-out infinite; z-index: 3; }
-@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-.badge { background: var(--nana-yellow); border: 2px solid var(--dark-grey); padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: bold; }
-
-/* --- 5. 滚动跳出动画 (修复版) --- */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Q弹感曲线 */
-}
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-/* --- 6. 核心项目经历 (小窗布局回归) --- */
-.section-title { text-align: center; font-size: 2.2rem; margin-bottom: 80px; color: var(--text-black); }
-
-.project-item-v2 {
-    display: flex; gap: 60px; align-items: center; flex-wrap: wrap; margin-bottom: 100px;
-}
-
-.card-white {
-    background: var(--white); padding: 50px; border-radius: var(--radius-lg);
-    box-shadow: 12px 12px 0px var(--nana-pink); border: 2px solid rgba(0,0,0,0.02);
-    margin-bottom: 50px; transition: all 0.3s ease;
-}
-.card-white:hover { transform: translateY(-8px); box-shadow: 15px 15px 0px var(--nana-blue); }
-
-/* 录屏小窗回归 & 可爱动画核心 */
-.demo-window {
-    flex: 1; min-width: 340px; background: #2d3748; /* 深色背景 */
-    border-radius: 24px; padding: 12px;
-    box-shadow: 20px 20px 0px var(--nana-blue); border: 4px solid var(--white);
-    overflow: hidden; transform: rotate(1deg); /* 初始微微倾斜 */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 悬停Q弹 */
-}
-.demo-window:hover { transform: rotate(0deg) scale(1.05); } /* 悬停转正并放大 */
-
-.window-controls { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; }
-.window-controls span { width: 10px; height: 10px; border-radius: 50%; }
-.dot-r { background: #ff5f56; } .dot-y { background: #ffbd2e; } .dot-g { background: #27c93f; }
-.window-label { color: #a0aec0; font-size: 11px; margin-left: 10px; }
-
-.demo-window video, .demo-window iframe { width: 100%; border-radius: 12px; display: block; background: white; }
-
-/* 按钮样式 */
-.btn-cute-sm {
-    display: inline-block; padding: 10px 25px; border-radius: 50px;
-    text-decoration: none; font-weight: bold; font-size: 0.9rem;
-    border: 2px solid var(--dark-grey); background: var(--white);
-    color: var(--dark-grey); margin-top: 25px; transition: 0.3s;
-}
-.btn-cute-sm:hover { background: var(--dark-grey); color: white; transform: scale(1.05); }
-
-/* --- 7. 弹性虚线时间轴 --- */
-.timeline-v2 { padding-left: 60px; border-left: 5px dashed var(--nana-blue); margin: 40px 0; }
-.timeline-item-v2 { position: relative; margin-bottom: 100px; }
-.timeline-dot { position: absolute; left: -74px; top: 12px; width: 24px; height: 24px; background: var(--white); border-radius: 50%; border: 6px solid var(--nana-pink); }
-.dot-blue { border-color: var(--nana-blue); }
-.tag-blue { background: var(--nana-blue); color: #2c5282; padding: 5px 15px; border-radius: 50px; font-weight: bold; }
-.desc-list-v2 li::before { content: "🌸"; margin-right: 8px; }
-
-/* --- 8. 技能板块与进度条动画 --- */
-.skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 40px; }
-.progress-fill { height: 10px; width: 0; border-radius: 20px; transition: width 1.5s ease-in-out; }
-.bar-pink { background: linear-gradient(90deg, #ffdae9, #f687b3); }
-.bar-blue { background: linear-gradient(90deg, #d0e8ff, #4299e1); }
-
-/* --- 9. 响应式适配 --- */
-@media (max-width: 768px) {
-    .section { padding: 80px 0; }
-    .hero h1 { font-size: 2rem; }
-    .skills-wrapper { grid-template-columns: 1fr; padding: 20px; }
-    .timeline-v2 { padding-left: 40px; }
-    .timeline-dot { left: -54px; }
-    .card-white { padding: 30px; }
-    .demo-window { min-width: 100%; }
-}
-
-.footer { text-align: center; padding: 60px 0; color: #a0aec0; }
-
-/* --- 10. 校园经历卡片：100% 还原动态效果 --- */
-.sjtu-grid {
+/* --- 技能板块与进度条动画 --- */
+.skills-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 关键：确保两列并排 */
-    gap: 40px; /* 增加大呼吸感间距 */
-    margin-top: 40px;
-}
-
-.tab-card {
-    background: white;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     padding: 40px;
-    border-radius: var(--radius-md); /* 使用你定义的圆角变量 */
-    border-bottom: 8px solid var(--nana-pink); /* 加粗彩色底边，更可爱 */
-    box-shadow: 12px 12px 0px rgba(255, 218, 233, 0.4); /* 配合多巴胺色的阴影 */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Q弹动画曲线 */
-    cursor: default;
 }
 
-/* 找回之前的悬浮动态效果 */
-.tab-card:hover {
-    transform: translateY(-12px) scale(1.02); /* 向上跳动并轻微放大 */
-    box-shadow: 15px 15px 0px var(--nana-blue); /* 悬浮时阴影变色 */
-    border-bottom-color: var(--nana-blue);
-}
-
-.tab-card h4 { 
-    margin-bottom: 20px; 
-    color: var(--text-black); 
-    font-size: 1.3rem;
+.group-label {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    color: var(--text-black);
 }
 
-.tab-card p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-    font-size: 0.95rem;
+.group-label span { width: 12px; height: 12px; border-radius: 50%; }
+.dot-pink { background: #f687b3; box-shadow: 0 0 10px #ffdae9; }
+.dot-blue { background: #4299e1; box-shadow: 0 0 10px #d0e8ff; }
+
+.skill-item { margin-bottom: 25px; }
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
-/* 适配手机端：自动变成一列 */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #edf2f7;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0; /* 初始宽度必须为0，靠 JS 注入目标值 */
+    border-radius: 20px;
+    background-size: 200% 100%;
+    transition: width 1.5s cubic-bezier(0.1, 0.42, 0.41, 1);
+}
+
+/* 颜色渐变 */
+.bar-pink { background: linear-gradient(90deg, #ffdae9, #f687b3); }
+.bar-blue { background: linear-gradient(90deg, #d0e8ff, #4299e1); }
+
+/* 当父元素被激活时，JS 会修改 element.style.width，此时 transition 产生效果 */
+.reveal.active .progress-fill {
+    opacity: 1;
+}
+
+/* 响应式适配 */
 @media (max-width: 768px) {
-    .sjtu-grid { 
-        grid-template-columns: 1fr; 
-        gap: 25px;
-    }
+    .skills-wrapper { grid-template-columns: 1fr; padding: 20px; }
 }
