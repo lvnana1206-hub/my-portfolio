@@ -71,6 +71,23 @@ const translations = {
 let currentLang = 'zh';
 
 /**
+ * 滚动检测函数：让卡片“跳”出来
+ */
+function handleReveal() {
+    const reveals = document.querySelectorAll(".reveal");
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 120; // 提前120px触发动画
+
+        if (elementTop < windowHeight - elementVisible) {
+            el.classList.add("active");
+        }
+    });
+}
+
+/**
  * 核心更新函数
  */
 function updateContent() {
@@ -99,37 +116,57 @@ function updateContent() {
     // 更新项目 2 及双文件按钮
     document.getElementById('p2-title').innerText = lang.p2Title;
     document.getElementById('p2-desc').innerHTML = lang.p2Desc;
-    const fileLinks = document.querySelectorAll('.btn-file');
+    
+    // 兼容多种按钮类名写法 (btn-file 或 btn-cute-sm)
+    const fileLinks = document.querySelectorAll('.btn-cute-sm, .btn-file');
+    // 假设前两个按钮是项目2的下载链接
     if (fileLinks.length >= 2) {
         fileLinks[0].innerText = lang.p2Btn1;
         fileLinks[1].innerText = lang.p2Btn2;
     }
 
     // 更新项目 3
-    document.getElementById('p3-title').innerText = lang.p3Title;
-    document.getElementById('p3-desc').innerText = lang.p3Desc;
+    if(document.getElementById('p3-title')) {
+        document.getElementById('p3-title').innerText = lang.p3Title;
+        document.getElementById('p3-desc').innerText = lang.p3Desc;
+    }
 
     // 页脚内容
-    document.querySelector('.footer p:first-child').innerText = lang.footerText;
+    const footerP = document.querySelector('.footer p:first-child');
+    if(footerP) footerP.innerText = lang.footerText;
 
-    // 为全页面切换语言样式（可选：切换字体等）
+    // 为全页面切换语言样式
     document.body.className = isEn ? 'en-mode' : 'zh-mode';
+
+    // 切换语言后，重新计算一次滚动位置，防止动画失效
+    handleReveal();
 }
 
 /**
- * 语言切换监听
+ * 监听器初始化
  */
-document.getElementById('lang-toggle').addEventListener('click', function() {
-    // 增加一个可爱的点击反馈：稍微晃动一下按钮
-    this.style.transform = "scale(0.9)";
-    setTimeout(() => {
-        this.style.transform = "scale(1)";
-        currentLang = currentLang === 'zh' ? 'en' : 'zh';
-        updateContent();
-        // 自动平滑滚动到顶部，让面试官看到变化
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 150);
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. 初始化内容
+    updateContent();
+
+    // 2. 监听语言切换按钮
+    document.getElementById('lang-toggle').addEventListener('click', function() {
+        this.style.transform = "scale(0.9)";
+        setTimeout(() => {
+            this.style.transform = "scale(1)";
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            updateContent();
+            // 自动平滑滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 150);
+    });
+
+    // 3. 监听滚动事件
+    window.addEventListener("scroll", handleReveal);
+    
+    // 初始执行一次滚动检测，防止首屏元素不显示
+    handleReveal();
 });
 
-// 初始化
-window.onload = updateContent;
+// 确保资源加载完毕后再执行一次检测
+window.onload = handleReveal;
