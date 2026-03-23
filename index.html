@@ -3,80 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nana Lyu | Portfolio</title>
+    <title>Nana Lyu | Portfolio v2.0</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="lang-switch">
+<body class="en-mode">
+    <div class="lang-switch-container">
         <button id="lang-btn">中文</button>
     </div>
 
+    <div class="orbs-container">
+        <div class="orb pink"></div>
+        <div class="orb blue"></div>
+        <div class="orb purple"></div>
+    </div>
+
     <header class="hero">
-        <div class="hero-content">
+        <div class="hero-content fade-in">
             <h1 id="hero-name">Nana Lyu (吕娜娜)</h1>
-            <p id="hero-title" class="tagline">AI Product Operations | User Growth | Business Development</p>
+            <p id="hero-title" class="tagline">AI Product Operations | User Growth | BD</p>
             <p id="hero-desc">"I turn user insights into growth, and partnerships into scalable results."</p>
-            <div class="cta-btns">
-                <a href="#projects" class="btn primary" id="btn-work">View My Work</a>
-                <a href="mailto:lvnana1206@163.com" class="btn secondary" id="btn-contact">Contact Me</a>
+            <div class="personal-tags">
+                <span class="tag">💡 Creative Problem Solver</span>
+                <span class="tag">🤝 Expert Negotiator</span>
+                <span class="tag">📊 Data Enthusiast</span>
+                <span class="tag">🌍 Intercultural Navigator</span>
             </div>
         </div>
     </header>
 
-    <section class="about">
-        <h2 class="section-title" id="about-title">About Me</h2>
-        <p id="about-text">
-            SJTU Graduate with a dual background in English and Public Administration. Expert in leveraging AI & Data (Python/NLP) to drive user growth and business excellence. Proven track record in B2B partnership expansion and cross-cultural communication.
-        </p>
+    <section class="skills-viz section">
+        <h2 class="section-title" id="skills-viz-title">Skills & Power Index</h2>
+        <div class="skill-container">
+            <div class="skill-bar-wrap">
+                <label>Data Analysis (Python/R)</label>
+                <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <label>AI & NLP Modeling (Sentiment)</label>
+                <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <label>English (TEM-8) / French</label>
+                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+                <label>B2B BD & Negotiation</label>
+                <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
+            </div>
+        </div>
     </section>
 
-    <section id="projects" class="projects">
-        <h2 class="section-title" id="project-title">Key Projects</h2>
+    <section id="projects" class="projects section">
+        <h2 class="section-title" id="project-title">AI & Data Projects</h2>
         <div class="project-grid">
-            <div class="card">
-                <div class="icon">🤝</div>
-                <h3 id="p1-title">B2B Partnership (BD)</h3>
-                <p id="p1-desc">Successfully onboarded 17 Fortune 500 companies (Lenovo, Schneider, etc.). Designed onsite study models and achieved 100% project delivery.</p>
+            <div class="card project-card">
+                <div class="card-icon">🤖</div>
+                <h3>Nana Insight AI</h3>
+                <p id="p-insight-desc">NLP-based User Voice Analysis Platform (Python/Streamlit). 📊 Analyzed 3.1w+ user entries.</p>
+                <a href="https://nana-insight.streamlit.app/" target="_blank" class="link-btn">Demo 🔗</a>
             </div>
-            <div class="card">
-                <div class="icon">📈</div>
-                <h3 id="p2-title">Multi-Stakeholder Ops</h3>
-                <p id="p2-desc">Managed 1,000+ users and 5,000+ service hours. Coordinated between enterprises, schools, and users with high efficiency.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🏛️</div>
-                <h3 id="p3-title">Gov-Enterprise Resources</h3>
-                <p id="p3-desc">Led policy applications with 100% success rate. Secured critical government support and industry certifications for tech products.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🤖</div>
-                <h3 id="p4-title">AI & Data Insight</h3>
-                <p id="p4-desc">Analyzed 31,000+ user data entries using NLP/Python. Identified 8 key demand categories to drive product decision-making.</p>
+            <div class="card project-card">
+                <div class="card-icon">📖</div>
+                <h3 id="p-narrative-title">Intercultural Narrative Analysis</h3>
+                <p id="p-narrative-desc">Quantifying literary structure using Digital Humanities methods (R). ✒️ Narratology modeling.</p>
+                <a href="#" class="link-btn">Report (Demo)</a>
             </div>
         </div>
     </section>
 
-    <section class="skills">
-        <h2 class="section-title" id="skills-title">Core Skills</h2>
-        <div class="skill-tags">
-            <span>AI Product Operations</span>
-            <span>User Growth</span>
-            <span>Business Development</span>
-            <span>Sales Strategy</span>
-            <span>Data Analysis (Python/R)</span>
-            <span>Cross-cultural Communication</span>
+    <section id="internships" class="internships section">
+        <h2 class="section-title" id="intern-title">Professional Experience (Internships)</h2>
+        <div class="intern-list">
+            <div class="intern-item">
+                <div class="intern-img">
+                    <img src="https://via.placeholder.com/300x150?text=Adream+Foundation" alt="Adream Foundation">
+                </div>
+                <div class="intern-info">
+                    <h3 id="intern1-name">Shanghai Adream Charitable Foundation</h3>
+                    <p id="intern1-desc">BD & Operations: Connected 17 Fortune 500 companies (Lenovo, Schneider) for educational programs.</p>
+                    <a href="https://mp.weixin.qq.com/s/tcCvXV9snGweWrD95YJyVA" target="_blank" class="text-link">View Published Article ↗</a>
+                </div>
+            </div>
+            <div class="intern-item">
+                <div class="intern-img">
+                    <img src="https://via.placeholder.com/300x150?text=XYZ+Robotics" alt="XYZ Robotics">
+                </div>
+                <div class="intern-info">
+                    <h3 id="intern2-name">XYZ Robotics (Government Liaison) ToB/ToG BD</h3>
+                    <p id="intern2-desc">Cross-functional BD coordination; obtained critical policy certifications with 100% success rate.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="contact-footer">
-        <p id="footer-cta">"Let’s build scalable and meaningful products together."</p>
-        <p>Email: <a href="mailto:lvnana1206@163.com">lvnana1206@163.com</a></p>
+    <footer class="contact-footer section">
+        <div class="orbs-container small">
+            <div class="orb purple"></div>
+            <div class="orb pink"></div>
+        </div>
+        <p id="footer-cta" class="footer-cta">"Let’s build scalable and meaningful products together."</p>
         <div class="social-links">
-            <a href="#">LinkedIn</a> | <a href="https://nana-insight.streamlit.app/">Nana Insight AI</a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+            <a href="mailto:lvnana1206@163.com">Email</a> | <a href
