@@ -155,20 +155,17 @@ function resetProgressBars() {
 // 3. 滚动可见性检查
 function handleReveal() {
     const reveals = document.querySelectorAll(".reveal");
+    const windowHeight = window.innerHeight;
+    
     reveals.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (elementTop < windowHeight - 50) {
-            if (!el.classList.contains('active')) {
-                el.classList.add("active");
-                // 如果是技能板块被激活，确保进度条跑起来
-                if (el.id === 'title-skills' || el.querySelector('.progress-fill')) {
-                    resetProgressBars();
-                }
-            }
+        const revealPoint = 80; // 稍微调大一点点，让它在快到视野中央时跳出来
+        if (elementTop < windowHeight - revealPoint) {
+            el.classList.add("active");
         }
     });
 }
+
 
 // 4. 初始化
 document.addEventListener("DOMContentLoaded", () => {

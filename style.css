@@ -144,6 +144,105 @@ body {
 }
 .tab-card h4 { margin-bottom: 15px; color: var(--text-black); font-size: 1.15rem; }
 
+
+/* --- 7. 实习经历 & 弹性虚线时间轴 (深度修复间距) --- */
+.timeline-v2 {
+    position: relative;
+    padding-left: 60px;
+    border-left: 5px dashed var(--nana-blue); 
+    margin: 60px 0; /* 增加上下外边距 */
+}
+
+/* 核心修复：增加每一项实习经历之间的垂直距离 */
+.timeline-item-v2 { 
+    position: relative; 
+    margin-bottom: 120px; /* 从100px提升到120px，确保不拥挤 */
+    display: block;
+    width: 100%;
+}
+
+/* 最后一项不需要底部间距 */
+.timeline-item-v2:last-child { margin-bottom: 0; }
+
+.timeline-dot {
+    position: absolute; 
+    left: -74px; /* 这里的数值需根据 border-left 的位置微调 */
+    top: 15px;
+    width: 24px; 
+    height: 24px;
+    background: var(--white); 
+    border-radius: 50%;
+    border: 6px solid var(--nana-pink); 
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+/* 鼠标悬停在卡片上时，对应的点变大 */
+.timeline-item-v2:hover .timeline-dot { transform: scale(1.3); }
+
+.dot-blue { border-color: var(--nana-blue); }
+.dot-yellow { border-color: var(--nana-yellow); }
+.dot-purple { border-color: var(--nana-purple); }
+
+.timeline-time {
+    display: inline-block;
+    background: var(--nana-blue);
+    color: #2c5282;
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 20px; /* 增加时间与卡片的间距 */
+    box-shadow: 4px 4px 0px rgba(208, 232, 255, 0.5);
+}
+
+/* 经历内容卡片样式优化 */
+.timeline-content.card-white {
+    padding: 40px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.role-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin: 15px 0; /* 增加标签上下间距 */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 修复列表项间距 */
+.desc-list-v2 li {
+    position: relative; 
+    padding-left: 35px; 
+    margin-bottom: 18px; /* 增加列表行间距 */
+    font-size: 0.95rem;
+}
+
+/* --- 9. 校园经历卡片间距修复 --- */
+.sjtu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; /* 增加左右卡片间距 */
+    margin-top: 30px;
+}
+
+.tab-card {
+    background: white;
+    padding: 35px;
+    border-radius: var(--radius-md);
+    border-bottom: 8px solid var(--nana-pink); /* 加粗底部条更显 Q 弹 */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tab-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 15px 15px 0px var(--nana-blue);
+}
+
 /* --- 9. 按钮样式 --- */
 .btn-cute-sm {
     display: inline-block; padding: 8px 20px; border-radius: 50px;
