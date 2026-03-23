@@ -1,240 +1,114 @@
 /* =========================================
-   1. 核心撞色变量 (剧烈对比方案)
+   白金蓝商务美学
    ========================================= */
 :root {
-    --bg-dark: #0f172a;           /* 深靛青背景 (接近黑但更有质感) */
-    --accent-purple: #c084fc;     /* 亮紫色 (高光) */
-    --accent-orange: #fb923c;     /* 亮橙色 (撞色点缀) */
-    --accent-cyan: #22d3ee;       /* 青色 (科技感辅助) */
-    --text-main: #f8fafc;         /* 浅色文字 */
-    --text-muted: #94a3b8;        /* 灰色文字 */
-    --card-bg: #1e293b;           /* 卡片深色背景 */
-    --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --bg-main: #f4f7fa;        /* 浅蓝色底色 */
+    --card-bg: #ffffff;        /* 白色卡片背景 */
+    --accent-gold: #d4af37;    /* 核心金 (雅金) */
+    --text-black: #2c3e50;     /* 黑色文本 */
+    --border-black: #1a1a1a;   /* 黑金撞色边框 */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* =========================================
-   2. 基础全局样式
-   ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Poppins', 'Noto Sans SC', sans-serif;
-    background-color: var(--bg-dark); /* 全局深色底 */
-    color: var(--text-main);
-    line-height: 1.6;
+    background-color: var(--bg-main);
+    color: var(--text-black);
+    line-height: 1.7;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.grey-bg { background-color: #eef2f6; }
+.mt-4 { margin-top: 2rem; }
 
-.section {
-    padding: 100px 0;
-}
-
-/* 撞色区域：使用深浅交替或渐变 */
-.grey-bg {
-    background-color: #161e2d; /* 稍亮的深色做区分 */
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 60px;
-    color: var(--accent-purple);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.section-title::after {
-    content: '';
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* =========================================
-   3. 导航栏 (透明毛玻璃效果)
-   ========================================= */
+/* 导航 */
 .nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 5%; background: rgba(255,255,255,0.9);
+    position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-gold);
 }
 
-.logo {
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: var(--accent-cyan);
-    text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
-}
+.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; }
 
 #lang-toggle {
-    padding: 8px 20px;
-    border: 2px solid var(--accent-orange);
-    background: transparent;
-    color: var(--accent-orange);
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+    padding: 5px 15px; border: 1px solid var(--border-black);
+    background: transparent; cursor: pointer; font-size: 0.8rem;
+}
+
+/* Hero 区域：照片与个人信息 */
+.hero {
+    padding: 80px 0; background: linear-gradient(135deg, #ffffff 0%, #f4f7fa 100%);
+    text-align: center; border-bottom: 1px solid #ddd;
+}
+
+.hero-container {
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.photo-frame {
+    width: 160px; height: 160px; border-radius: 50%;
+    border: 3px solid var(--accent-gold); padding: 5px;
+    background: #white; margin-bottom: 20px; overflow: hidden;
+}
+
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+.hero h1 { font-size: 2.5rem; color: var(--border-black); margin-bottom: 10px; }
+
+.badge {
+    display: inline-block; padding: 4px 12px; margin: 5px;
+    background: white; border: 1px solid var(--accent-gold);
+    color: var(--accent-gold); font-size: 0.85rem; border-radius: 20px;
+}
+
+/* 技能卡片 */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.skill-card { background: white; padding: 25px; border-bottom: 3px solid var(--accent-gold); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* 时间轴：跳动感 */
+.timeline { position: relative; padding-left: 30px; margin-top: 40px; }
+.timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--accent-gold);
+}
+
+.timeline-item { position: relative; margin-bottom: 50px; }
+.timeline-dot {
+    position: absolute; left: -36px; top: 10px;
+    width: 12px; height: 12px; background: var(--border-black);
+    border: 3px solid var(--accent-gold); border-radius: 50%;
     transition: var(--transition);
 }
 
-#lang-toggle:hover {
-    background: var(--accent-orange);
-    color: var(--bg-dark);
-    box-shadow: 0 0 20px rgba(251, 146, 60, 0.4);
-}
+.timeline-item:hover .timeline-dot { transform: scale(1.8); background: var(--accent-gold); }
 
-/* =========================================
-   4. Hero 区域 (冲击力大标题)
-   ========================================= */
-.hero {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at center, #2e1065 0%, #0f172a 100%);
-}
-
-.hero h1 {
-    font-size: 4.5rem;
-    background: linear-gradient(to right, #fff, var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-
-.tagline {
-    font-size: 1.4rem;
-    color: var(--accent-cyan);
-    font-weight: 300;
-    margin-bottom: 40px;
-}
-
-.badge {
-    padding: 8px 20px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--text-main);
-    border-radius: 4px;
-    margin: 8px;
-    font-size: 0.9rem;
-}
-
-/* =========================================
-   5. 项目卡片 (霓虹边框效果)
-   ========================================= */
-.project-item {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    margin-bottom: 120px;
-}
-
-.project-item.reverse { flex-direction: row-reverse; }
-
-.project-info h3 {
-    font-size: 1.8rem;
-    color: var(--accent-orange);
-    margin-bottom: 20px;
-}
-
-.desc-list li {
-    margin-bottom: 15px;
-    color: var(--text-muted);
-}
-
-.desc-list li b { color: var(--text-main); }
-
-.macbook-frame {
-    border: 2px solid var(--accent-purple);
-    box-shadow: 0 0 30px rgba(192, 132, 252, 0.2);
-}
-
-.btn {
-    background: var(--accent-purple);
-    color: var(--bg-dark);
-    padding: 15px 35px;
-    border-radius: 4px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-/* =========================================
-   6. 实习时间轴 (对比强化)
-   ========================================= */
-.timeline::after { background: var(--accent-purple); }
-
-.timeline-marker {
-    background: var(--accent-cyan);
-    box-shadow: 0 0 15px var(--accent-cyan);
-}
-
+/* 卡片黑金撞色设计 */
 .card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: white; padding: 30px; border-left: 6px solid var(--border-black);
+    box-shadow: 8px 8px 0px var(--accent-gold); transition: var(--transition);
 }
 
-.role-title { color: var(--accent-cyan); }
+.card:hover { transform: translateY(-5px); box-shadow: 12px 12px 0px var(--accent-gold); }
 
-/* =========================================
-   7. 公众号 & SJTU Life (撞色按钮)
-   ========================================= */
-.featured-card {
-    background: #252f3f;
-    border-left: 5px solid var(--accent-orange);
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.date { font-size: 0.85rem; color: #888; font-family: 'Poppins'; }
+.role-title { color: var(--accent-gold); font-weight: 600; margin-bottom: 15px; }
+
+/* 成果链接 */
+.links-group { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.btn-xs {
+    text-decoration: none; font-size: 0.75rem; padding: 4px 10px;
+    border: 1px solid var(--border-black); color: var(--border-black);
+    transition: 0.3s;
 }
+.btn-xs:hover { background: var(--border-black); color: white; }
 
-.featured-card h4 { color: var(--accent-orange); }
+/* 项目卡片 */
+.project-card { background: white; padding: 30px; border: 1px solid #eee; }
+.desc-list { list-style: none; margin: 15px 0; }
+.desc-list li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+.desc-list li::before { content: '◈'; position: absolute; left: 0; color: var(--accent-gold); }
 
-.tab-item {
-    background: var(--card-bg);
-    border: 1px solid rgba(192, 132, 252, 0.2);
-}
-
-.btn-xs, .btn-sm {
-    background: transparent;
-    border: 1px solid var(--accent-cyan);
-    color: var(--accent-cyan);
-}
-
-.btn-xs:hover {
-    background: var(--accent-cyan);
-    color: var(--bg-dark);
-}
-
-/* =========================================
-   8. 页脚
-   ========================================= */
-.footer {
-    background: #000;
-    border-top: 1px solid var(--accent-purple);
-}
-
-/* 响应式适配 */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.8rem; }
-    .project-item { flex-direction: column !important; }
-}
+.footer { text-align: center; padding: 50px; background: #fff; border-top: 1px solid var(--accent-gold); }
