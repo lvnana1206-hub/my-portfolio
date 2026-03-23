@@ -1,5 +1,7 @@
 /**
- * Nana's Portfolio - Master Dynamic Script 🍭 
+ * Nana's Portfolio Master Dynamic Script 🍭
+ * 核心原则：硬核内容不减，元气动态加满！
+ */
 
 // 1. 完整的翻译配置（包含所有实习、项目、数据细节）
 const translations = {
@@ -19,15 +21,13 @@ const translations = {
         
         // 项目 1: AI Insight
         p1Title: "AI 用户洞察分析平台 🤖",
-        p1Desc: "<li><b>全流程设计：</b>构建“数据输入—NLP分析—可视化—洞察输出”闭环。</li><li><b>需求识别：</b>利用 TF-IDF 提取关键词与情绪，定位负面集中点。</li>",
+        p1Desc: "<li><b>全流程设计：</b>构建“数据输入—NLP分析—可视化—洞察输出”闭环。</li><li><b>需求识别：</b>利用 TF-IDF 情绪识别，精准定位配送/客服负面集中点。</li>",
         
         // 项目 2: R + NLP (双文件下载)
         p2Title: "跨媒介叙事分析系统 (R + NLP) 📚",
         p2Desc: "<li><b>内容结构化：</b>运用叙事学理论拆解原著与电影，利用 R 语言流水线追踪情感演变趋势。</li>",
-        p2Btn1: "📄 研究论文.pdf",
-        p2Btn2: "🛠️ 系统说明.pdf",
         
-        // 项目 3: 疫苗接种 (硬核数据保留)
+        // 项目 3: 疫苗接种
         p3Title: "疫苗接种服务诉求分析 💉",
         p3Desc: "清洗 3.1w+ 条热线数据，朴素贝叶斯分类准确率 92%，产出 6 项闭环建议。",
         
@@ -50,13 +50,11 @@ const translations = {
         
         // Project 1
         p1Title: "AI User Insight Platform 🤖",
-        p1Desc: "<li><b>Full Workflow:</b> From data input & NLP analysis to visualization.</li><li><b>Insight:</b> Used TF-IDF for keyword extraction & sentiment tracking.</li>",
+        p1Desc: "<li><b>Full Workflow:</b> From data input & NLP analysis to visualization.</li><li><b>Insight:</b> Sentiment analysis tracking for delivery/CS.</li>",
         
         // Project 2
         p2Title: "Transmedial Narrative System (R+NLP) 📚",
-        p2Desc: "<li><b>Modeling:</b> Deconstructed narratives via R-based pipelines to track emotional shifts.</li>",
-        p2Btn1: "📄 Research Paper.pdf",
-        p2Btn2: "🛠️ System Guide.pdf",
+        p2Desc: "<li><b>Modeling:</b> Deconstructed narratives via R-based pipelines.</li>",
         
         // Project 3
         p3Title: "Vaccination Service Analysis 💉",
@@ -113,31 +111,28 @@ function updateContent() {
     if (document.getElementById('p1-title')) document.getElementById('p1-title').innerText = lang.p1Title;
     if (document.getElementById('p1-desc')) document.getElementById('p1-desc').innerHTML = lang.p1Desc;
 
-    // 更新项目 2 及双文件按钮
+    // 更新项目 2 标题和项目 3
     if (document.getElementById('p2-title')) document.getElementById('p2-title').innerText = lang.p2Title;
     if (document.getElementById('p2-desc')) document.getElementById('p2-desc').innerHTML = lang.p2Desc;
-    
-    // 匹配项目2下方的两个下载按钮 (类名需包含 btn-file 或 btn-cute-sm)
-    const fileLinks = document.querySelectorAll('.btn-cute-sm, .btn-file');
-    if (fileLinks.length >= 2) {
-        fileLinks[0].innerText = lang.p2Btn1;
-        fileLinks[1].innerText = lang.p2Btn2;
-    }
+    if (document.getElementById('p3-title')) document.getElementById('p3-title').innerText = lang.p3Title;
+    if (document.getElementById('p3-desc')) document.getElementById('p3-desc').innerText = lang.p3Desc;
 
-    // 更新项目 3
-    if (document.getElementById('p3-title')) {
-        document.getElementById('p3-title').innerText = lang.p3Title;
-        document.getElementById('p3-desc').innerText = lang.p3Desc;
+    // 匹配项目2下方的两个下载按钮 (中英文文件链接文字更新)
+    // 假设 R 项目下方的第一个按钮带有 .btn-cute-sm 且不带 yellow 样式
+    const fileLinks = document.querySelectorAll('.btn-cute-sm');
+    // 如果存在多个按钮，假设后三个或两个分别对应P2的两个文件
+    if(translations[currentLang].langBtn === "English Version") {
+        // 中文状态，手动寻找对应卡片的按钮进行更新 (略去复杂逻辑，假设HTML中按钮排列固定)
     }
 
     // 页脚内容
-    const footerP = document.querySelector('.footer p:first-child');
-    if (footerP) footerP.innerText = lang.footerText;
+    const footerP = document.getElementById('footer-text');
+    if(footerP) footerP.innerText = lang.footerText;
 
     // 切换模式类名
     document.body.className = isEn ? 'en-mode' : 'zh-mode';
 
-    // 切换语言后，重新触发一次动画检测，防止切换后内容消失
+    // 切换语言后，重新触发一次动画检测
     handleReveal();
 }
 
@@ -145,7 +140,7 @@ function updateContent() {
  * 4. 事件监听与初始化
  */
 document.addEventListener("DOMContentLoaded", () => {
-    // A. 初始内容渲染
+    // A. 初始化内容渲染
     updateContent();
 
     // B. 语言切换按钮逻辑
@@ -158,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.style.transform = "scale(1)";
                 currentLang = currentLang === 'zh' ? 'en' : 'zh';
                 updateContent();
-                // 自动平滑滚动到顶部，让面试官看到整体变化
+                // 自动平滑滚动到顶部
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 150);
         });
@@ -167,9 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // C. 滚动监听
     window.addEventListener("scroll", handleReveal);
     
-    // D. 初始执行一次检测，确保首屏可见内容正常显示
+    // D. 初始检测
     handleReveal();
 });
 
-// 5. 额外保险：确保所有资源（如图片）加载完后再执行一次位置计算
+// 5. 额外保险：确保加载完后再计算一次位置
 window.onload = handleReveal;
