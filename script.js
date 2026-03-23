@@ -1,7 +1,7 @@
 /**
  * Nana's Portfolio Master Dynamic Script 🍭
  * 核心原则：硬核内容不减，元气动态加满！
- * 已集成：SJTU双学位教育背景、BCAR实习结构、动态技能进度条
+ * 已集成：SJTU双学位教育背景、BCAR实习结构、动态技能进度条、论文成果引用
  */
 
 // 1. 完整的翻译配置
@@ -28,7 +28,7 @@ const translations = {
         eduM2: "行政管理专业 (Admin Management)",
         eduList: "<li>✨ 复合学科背景：兼具国际化沟通视野与组织管理逻辑。</li><li>✨ 专业技能：英语专业八级 (TEM-8) 证书。</li>",
 
-        // 技能名称
+        // 技能名称 (需对应 HTML id="s1-text" 等)
         s1: "NLP 洞察 / Prompt Engineering",
         s2: "数据分析 (Python / R / SQL)",
         s3: "内容策略 / SOP 流程优化",
@@ -38,11 +38,11 @@ const translations = {
         p1Title: "AI 用户洞察分析平台 🤖",
         p1Desc: "<li><b>全流程设计：</b>构建“数据输入—NLP分析—可视化—洞察输出”闭环。</li><li><b>需求识别：</b>利用 TF-IDF 情绪识别，精准定位配送/客服负面集中点。</li>",
         
-        // 项目 2: R + NLP
+        // 项目 2: R + NLP (已更新论文亮点)
         p2Title: "跨媒介叙事分析系统 (R + NLP) 📚",
-        p2Desc: "<li><b>内容结构化：</b>运用叙事学理论拆解原著与电影，利用 R 语言流水线追踪情感演变趋势。</li>",
-        p2Btn1: "📄 研究论文.pdf",
-        p2Btn2: "🛠️ 系统说明.pdf",
+        p2Desc: "<li><b>文本结构化：</b>基于热奈特叙事学理论，深入对比《紫色》电影与原著话语差异。</li><li><b>情感计算：</b>利用 R 语言（AFINN & Bing 词典）进行情感建模，相关系数达 0.767，量化呈现角色心路历程。</li>",
+        p2Btn1: "📄 阅读学位论文 (SJTU)",
+        p2Btn2: "📊 查看 R 语言报告",
         
         // 项目 3: 疫苗接种
         p3Title: "疫苗接种服务诉求分析 💉",
@@ -101,10 +101,10 @@ const translations = {
         p1Desc: "<li><b>Full Workflow:</b> From data input & NLP analysis to visualization.</li><li><b>Insight:</b> Sentiment analysis tracking for delivery/CS.</li>",
         
         // Project 2
-        p2Title: "Transmedial Narrative System (R+NLP) 📚",
-        p2Desc: "<li><b>Modeling:</b> Deconstructed narratives via R-based pipelines.</li>",
-        p2Btn1: "📄 Research Paper",
-        p2Btn2: "🛠️ System Guide",
+        p2Title: "Transmedial Narrative System (R + NLP) 📚",
+        p2Desc: "<li><b>Modeling:</b> Deconstructed narratives via R-based pipelines comparing movie and novel.</li><li><b>Sentiment Analysis:</b> Quantified emotional trajectories using AFINN/Bing (r=0.767).</li>",
+        p2Btn1: "📄 Read Thesis (SJTU)",
+        p2Btn2: "📊 View R-Report",
         
         // Project 3
         p3Title: "Vaccination Service Analysis 💉",
@@ -158,34 +158,32 @@ function updateContent() {
     const lang = translations[currentLang];
     const isEn = currentLang === 'en';
 
-    // 基础 UI 更新
+    // 基础 UI 更新列表
     const ids = [
         'lang-toggle', 'hero-name', 'hero-tagline', 'badge1', 'badge2', 'badge3',
         'title-edu', 'title-skills', 'title-projects', 'title-exp',
         'edu-school', 'edu-degree', 'edu-m1', 'edu-m2', 'edu-list',
         's1-text', 's2-text', 's3-text', 's4-text',
-        'p1-title', 'p1-desc', 'p2-title', 'p2-desc', 'p3-title', 'p3-desc',
-        'p2-btn1', 'p2-btn2', 'footer-text'
+        'p1-title', 'p1-desc', 'p2-title', 'p2-desc', 'p2-btn1', 'p2-btn2',
+        'p3-title', 'p3-desc', 'footer-text'
     ];
 
     ids.forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         
-        // 映射逻辑
-        const key = id.replace(/-/g, '').replace('title', 'title').replace('text', '');
-        // 特殊处理教育和项目逻辑
-        let contentKey = id.split('-').map((word, index) => index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)).join('');
-        if (id === 'lang-toggle') contentKey = 'langBtn';
+        // 自动匹配 key 名（移除连字符并转驼峰）
+        let key = id.replace(/-/g, '').replace('text', '');
+        if (id === 'lang-toggle') key = 'langBtn';
         
-        const content = lang[contentKey];
+        const content = lang[key];
         if (content) {
             if (content.includes('<')) el.innerHTML = content;
             else el.innerText = content;
         }
     });
 
-    // 循环更新 4 个实习经历
+    // 循环更新 4 个实习经历 (BCAR)
     for (let i = 1; i <= 4; i++) {
         const t = document.getElementById(`exp${i}-title`);
         const r = document.getElementById(`exp${i}-role`);
@@ -196,7 +194,7 @@ function updateContent() {
     }
 
     document.body.className = isEn ? 'en-mode' : 'zh-mode';
-    handleReveal();
+    handleReveal(); // 重新触发动画检测
 }
 
 /**
@@ -204,6 +202,7 @@ function updateContent() {
  */
 document.addEventListener("DOMContentLoaded", () => {
     updateContent();
+    
     const langBtn = document.getElementById('lang-toggle');
     if (langBtn) {
         langBtn.addEventListener('click', function() {
@@ -216,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 150);
         });
     }
+    
     window.addEventListener("scroll", handleReveal);
     handleReveal();
 });

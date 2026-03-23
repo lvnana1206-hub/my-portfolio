@@ -378,3 +378,18 @@ body {
     .timeline-v2 { padding-left: 40px; }
     .timeline-dot { left: -54px; }
 }
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.btn-cute-sm {
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-cute-sm:active {
+    transform: scale(0.95);
+}
