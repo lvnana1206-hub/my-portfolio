@@ -176,19 +176,20 @@ body {
 }
 
 /* --- 5. 滚动跳出动画 (Scroll-Reveal) --- */
+/* 初始隐藏状态 */
 .reveal {
     opacity: 0;
-    transform: translateY(60px) scale(0.9);
-    transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    transform: translateY(30px); /* 这里的位移不要太大，30px 足够了 */
+    transition: all 0.8s ease-out;
     visibility: hidden;
 }
 
+/* 激活显示状态 */
 .reveal.active {
-    opacity: 1; 
-    transform: translateY(0) scale(1);
+    opacity: 1;
+    transform: translateY(0);
     visibility: visible;
 }
-
 /* --- 6. 核心项目经历 --- */
 .section-title {
     text-align: center; font-size: 2.2rem; color: var(--text-black); margin-bottom: 80px;
