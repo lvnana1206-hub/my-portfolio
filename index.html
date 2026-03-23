@@ -4,8 +4,8 @@
         <button id="lang-toggle">English Version</button>
     </nav>
 
-    <header class="hero">
-        <div class="hero-container">
+    <header class="hero" style="text-align: center; padding: 100px 0;">
+    <div class="photo-wrapper">
             <div class="photo-wrapper">
                 <img src="吕娜娜 五寸 日常.jpg" alt="Nana Lyu" class="avatar">
                 <div class="floating-icon">🎈</div>
@@ -47,8 +47,8 @@
         <div class="container">
             <h2 class="section-title" id="title-projects">🚀 核心项目经历</h2>
             
-            <div class="project-item-v2">
-                <div class="project-info card-white">
+            <div class="project-item-v2 reveal">
+        <div class="project-info card-white" style="flex: 1.2;">
                     <h3 id="p1-title">AI 用户洞察分析平台 🤖</h3>
                     <ul id="p1-desc" class="desc-list">
                         <li><b>全流程设计：</b>构建“数据输入—NLP 分析—可视化—洞察输出”完整流程，支持本地生活及 App 评价场景。</li>
@@ -56,20 +56,20 @@
                         <li><b>AI 决策建议：</b>基于分析结果自动生成产品优化建议，实现从数据分析到决策支持的闭环。</li>
                         <li><b>交互设计：</b>基于 Streamlit 搭建交互式数据看板（指标卡、词云、分布图），提升业务应用效率。</li>
                     </ul>
-                    <a href="https://nana-insight.streamlit.app/" target="_blank" class="btn-cute">查看 Demo ➔</a>
-            </div>
-            
-            <div class="demo-window">
-                <div class="window-controls">
-                    <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-                </div>
-                <video autoplay muted loop playsinline>
-                    <source src="屏幕录制 2026-03-23 115044.mp4" type="video/mp4">
-                </video>
-            </div>
+                    <a href="https://nana-insight.streamlit.app/" target="_blank" class="btn-cute-sm" style="margin-top:20px; background:var(--nana-yellow);">查看 Demo ➔</a>
         </div>
+        
+        <div class="demo-window">
+            <div class="window-controls">
+                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            </div>
+            <video autoplay muted loop playsinline>
+                <source src="屏幕录制 2026-03-23 115044.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
-            <div class="project-card card-white mt-large">
+            <div class="card-white reveal" style="margin-top: 60px;">
                 <h3 id="p2-title">跨媒介叙事分析系统 (R + NLP) 📚</h3>
                 <ul id="p2-desc" class="desc-list">
                     <li><b>内容结构化建模：</b>运用叙事学理论对原著与电影版进行对标拆解，将非结构化文学内容转化为可量化的结构模型。</li>
@@ -99,7 +99,7 @@
     
     <div class="timeline-v2">
         
-        <div class="timeline-item-v2">
+        <div class="timeline-item-v2 reveal">
             <div class="timeline-dot dot-pink"></div>
             <div class="timeline-time">2023.12 - 2025.07</div>
             <div class="timeline-content card-white">
@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <div class="timeline-item-v2">
+       <div class="timeline-item-v2 reveal">
             <div class="timeline-dot dot-blue"></div>
             <div class="timeline-time">2024.06 - 2024.09</div>
             <div class="timeline-content card-white">
@@ -124,41 +124,31 @@
             </div>
         </div>
 
-        <div class="timeline-item-v2">
-            <div class="timeline-dot dot-yellow"></div>
-            <div class="timeline-time">2023.11 - 2024.02</div>
-            <div class="timeline-content card-white">
-                <h3>中科始创科技 🧪</h3>
-                <p class="role-tag tag-yellow">内容运营</p>
-                <p>将复杂科研信息结构化，产出逻辑清晰的多媒介内容。应用“信息前置”模板提升完读率。</p>
-                <div class="links-group">
-                    <a href="https://mp.weixin.qq.com/s/_AAHUvvrt6Ap5g531UWw9A" target="_blank" class="btn-cute-sm">大国重器</a>
-                    <a href="https://mp.weixin.qq.com/s/Mew-7ROVV_DYfNtkIpGuIQ" target="_blank" class="btn-cute-sm">科研巡礼</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item-v2">
-            <div class="timeline-dot dot-purple"></div> 
+        <div class="timeline-item-v2 reveal">
+            <div class="timeline-dot dot-purple"></div>
             <div class="timeline-time">2023.09 - 2023.11</div>
             <div class="timeline-content card-white">
                 <h3>星猿哲科技 (XYZ Robotics) 🤖</h3>
-                <p class="role-tag tag-purple">政府事务管理</p>
-                
+                <div class="role-tag tag-purple">政府事务管理</div>
                 <ul class="desc-list-v2">
-                    <li>
-                        <b>✨ 高价值项目申报：</b>
-                        主导上海市“创新产品目录”“智能机器人标杆企业”申报，<b>100%通过率入选</b>，直接助力企业获得政策补贴与资质背书。
-                    </li>
-                    <li>
-                        <b>🔍 政策分析与策略落地：</b>
-                        拆解 <b>15+项政策细则</b>，提炼 3 类申报得分点（技术先进性、场景适配性、社会效益），优化申报材料结构，提高过审率。
-                    </li>
-                    <li>
-                        <b>🤝 跨部门协同：</b>
-                        联动研发/财务部门输出核心材料，同步建立<b>政府沟通日报机制</b>，确保信息 0 误差传递，高效推进项目进展。
-                    </li>
+                    <li><b>✨ 高价值申报：</b>主导上海市“创新产品目录”申报，<b>100%通过率</b>。</li>
+                    <li><b>🔍 政策拆解：</b>拆解 <b>15+项细则</b>，提炼 3 类得分点，优化材料结构。</li>
+                    <li><b>🤝 跨部协同：</b>建立<b>政府沟通日报机制</b>，确保信息 0 误差传递。</li>
                 </ul>
+            </div>
+        </div>
+
+        <div class="timeline-item-v2 reveal">
+            <div class="timeline-dot dot-yellow"></div>
+            <div class="timeline-time">2023.02 - 2023.05</div>
+            <div class="timeline-content card-white">
+                <h3>北京中科始创科技 🧪</h3>
+                <div class="role-tag tag-yellow">内容运营</div>
+                <p>将复杂科研信息结构化，产出逻辑清晰的多媒介内容。应用“信息前置”模板提升完读率。</p>
+                <div class="links-group" style="margin-top:15px;">
+                   <a href="https://mp.weixin.qq.com/s/_AAHUvvrt6Ap5g531UWw9A" target="_blank" class="btn-cute-sm">大国重器</a>
+                    <a href="https://mp.weixin.qq.com/s/Mew-7ROVV_DYfNtkIpGuIQ" target="_blank" class="btn-cute-sm">科研巡礼</a>
+                </div>
             </div>
         </div>
 
