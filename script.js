@@ -20,7 +20,7 @@ const translations = {
         titleSkills: "🌟 核心技能储备",
         titleProjects: "🚀 核心项目经历",
         titleExp: "📅 实习与社会实践",
-        titleSjtu: "🐾 SJTU Life & Leadership",
+        titleSjtu: "🐾 校园经历",
         
         // 教育背景 (上海交通大学)
         eduSchool: "上海交通大学 (SJTU)",
