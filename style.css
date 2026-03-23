@@ -1,159 +1,84 @@
-/* =========================================
-   Nana's Portfolio - Final Merged Style 🍭
-   状态：间距锁定、动画找回、代码去重
-   ========================================= */
 
-/* --- 1. 全局变量 (统一最高标准) --- */
+
 :root {
     --nana-pink: #ffdae9;
     --nana-blue: #d0e8ff;
     --nana-yellow: #fef3c7;
-    --nana-purple: #e9d8fd;
-    --dark-grey: #4a5568;
     --text-black: #1a1a1a;
     --white: #ffffff;
     --bg-light: #f7faff;
-    --radius-md: 20px;
-    --radius-lg: 35px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* --- 1. 顶部 Hero & 间距修复 (不许重叠) --- */
+.hero { text-align: center; padding: 100px 0 60px 0; }
+#hero-tagline { margin-bottom: 40px; font-weight: 600; color: #3182CE; }
 
-body {
-    background-color: var(--bg-light);
-    font-family: 'Poppins', 'Noto Sans SC', sans-serif;
-    color: var(--dark-grey);
-    line-height: 1.8;
-    overflow-x: hidden;
-    padding-top: 80px;
-}
-
-.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
-.section { padding: 90px 0; }
-
-/* --- 2. Hero 区域：联系方式与标签重叠彻底修复 --- */
-.hero { 
-    text-align: center; 
-    padding: 100px 0 60px 0; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#hero-name { font-size: 2.6rem; margin-bottom: 20px; color: var(--text-black); }
-
-#hero-tagline { 
-    font-size: 1.3rem; 
-    color: #3182CE; 
-    font-weight: 600;
-    margin-bottom: 30px; 
-    letter-spacing: 1px;
-}
-
-/* 核心修复：建立块级“物理隔离带” */
-.hero-contact-section {
-    width: 100%;
-    /* 100px 强制推开 Email 与 下方标签的距离 */
-    margin: 30px 0 100px 0; 
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 10;
-}
-
-.contact-item {
-    background: var(--white);
-    padding: 12px 28px;
-    border-radius: 50px;
-    box-shadow: 8px 8px 0px var(--nana-pink); 
-    border: 2px solid rgba(0,0,0,0.03);
-    font-weight: 500;
-    transition: 0.3s ease;
-}
-
-.badge-group { 
-    display: flex; 
-    justify-content: center; 
-    gap: 20px; 
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 5;
-}
-
-.badge { 
-    background: var(--nana-yellow); 
-    border: 1.8px solid var(--dark-grey); 
-    padding: 8px 25px; 
+/* 强制推开联系方式与标签的距离 */
+.contact-item { 
+    display: inline-block; 
+    margin: 10px 15px 40px 15px; /* 底部 40px 确保不压到标签 */
+    padding: 12px 25px; 
+    background: white; 
     border-radius: 50px; 
-    font-weight: bold; 
-    box-shadow: 6px 6px 0px var(--nana-pink);
+    box-shadow: 8px 8px 0px var(--nana-pink); 
 }
 
-/* --- 3. 项目经历：找回电脑小窗动画 --- */
-.project-item-v2 {
-    display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-bottom: 100px;
-}
+.badge-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+.badge { background: var(--nana-yellow); border: 1.8px solid #4a5568; padding: 8px 22px; border-radius: 50px; font-weight: bold; box-shadow: 5px 5px 0px var(--nana-pink); }
 
+/* --- 2. 核心项目经历：找回电脑小窗 (不许消失) --- */
+.project-item-v2 { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-bottom: 80px; }
+
+/* 针对你网页里的 .demo-window 结构 */
 .demo-window {
-    flex: 1; min-width: 380px; 
-    background: #2d3748 !important; /* 强制深色外壳 */
-    border-radius: 20px; padding: 18px;
-    box-shadow: 18px 18px 0px var(--nana-blue); 
-    border: 3px solid var(--white);
-    overflow: hidden; 
-    /* 倾斜动画回归 */
+    flex: 1; min-width: 350px; background: #2d3748 !important; 
+    border-radius: 20px; padding: 15px;
+    box-shadow: 15px 15px 0px var(--nana-blue); border: 3px solid white;
     transform: rotate(1.5deg); 
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.demo-window:hover { transform: rotate(0deg) scale(1.03); }
+
+.window-controls { display: flex; gap: 8px; margin-bottom: 12px; }
+.window-controls span { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot-r { background: #ff5f56; } .dot-y { background: #ffbd2e; } .dot-g { background: #27c93f; }
+
+/* --- 3. 实习经历：找回时间轴 --- */
+.timeline-v2 { position: relative; padding-left: 50px; border-left: 5px dashed var(--nana-blue); margin: 40px 0; }
+.timeline-item-v2 { position: relative; margin-bottom: 80px; background: white; padding: 30px; border-radius: 25px; box-shadow: 10px 10px 0px var(--nana-pink); }
+
+/* 时间轴的小圆点 */
+.timeline-item-v2::before {
+    content: ""; position: absolute; left: -68px; top: 20px;
+    width: 20px; height: 20px; background: white;
+    border: 5px solid var(--nana-pink); border-radius: 50%; z-index: 10;
 }
 
-.demo-window:hover { 
-    transform: rotate(0deg) scale(1.05); 
-    box-shadow: 20px 20px 0px var(--nana-pink);
+/* --- 4. SJTU 校园经历：找回并排卡片 --- */
+/* 根据你网页 HTML 的类名适配 */
+.sjtu-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    margin-top: 30px; 
 }
 
-.window-controls { display: flex; gap: 8px; margin-bottom: 15px; align-items: center; }
-.window-controls span { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
-.dot-r { background: #ff5f56; } 
-.dot-y { background: #ffbd2e; } 
-.dot-g { background: #27c93f; }
-.window-label { color: #a0aec0; font-size: 12px; margin-left: 10px; font-family: monospace; }
-
-.demo-window video, .demo-window iframe { 
-    width: 100%; height: 320px; border-radius: 10px; display: block; background: white; border: none; 
-}
-
-/* --- 4. 实习经历 & 技能进度条 (保持原样) --- */
-.timeline-v2 { position: relative; padding-left: 70px; border-left: 6px dashed var(--nana-blue); margin: 60px 0; }
-.timeline-item-v2 { position: relative; margin-bottom: 140px; width: 100%; }
-.timeline-dot { position: absolute; left: -86px; top: 12px; width: 26px; height: 26px; background: var(--white); border-radius: 50%; border: 6px solid var(--nana-pink); z-index: 2; }
-.timeline-time { display: inline-block; background: var(--nana-blue); color: #2c5282; padding: 8px 22px; border-radius: 50px; font-weight: bold; margin-bottom: 25px; box-shadow: 4px 4px 0px rgba(208, 232, 255, 0.5); }
-
-.skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.progress-bar { width: 100%; height: 12px; background: #edf2f7; border-radius: 20px; overflow: hidden; margin-top: 15px; }
-.progress-fill { height: 100%; width: 0; transition: width 1.5s cubic-bezier(0.1, 0.42, 0.41, 1); }
-.bar-pink { background: linear-gradient(90deg, #ffdae9, #f687b3); }
-.bar-blue { background: linear-gradient(90deg, #d0e8ff, #4299e1); }
-
-/* --- 5. SJTU 校园卡片 --- */
-.sjtu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
 .tab-card {
-    background: white; padding: 35px; border-radius: var(--radius-md);
+    background: white; padding: 30px; border-radius: 25px;
     border-bottom: 8px solid var(--nana-pink);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.4s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
 }
-.tab-card:hover { transform: translateY(-12px); box-shadow: 15px 15px 0px var(--nana-blue); }
+.tab-card:hover { transform: translateY(-10px); box-shadow: 12px 12px 0px var(--nana-blue); }
 
-/* --- 6. 滚动显现动画 --- */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
+/* --- 5. 基础通用样式 (防止崩溃) --- */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 30px; }
+.section { padding: 60px 0; }
+video, iframe { width: 100%; border-radius: 10px; }
 
-/* --- 7. 响应式适配 --- */
+/* 响应式适配 */
 @media (max-width: 768px) {
-    .container { padding: 0 25px; }
-    .hero { padding: 80px 0 40px 0; }
-    .hero-contact-section { margin-bottom: 60px; }
-    .skills-wrapper, .sjtu-grid { grid-template-columns: 1fr; }
+    .sjtu-grid { grid-template-columns: 1fr; }
+    .project-item-v2 { flex-direction: column; }
     .demo-window { min-width: 100%; }
 }
