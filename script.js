@@ -1,8 +1,7 @@
 /**
- * Nana's Portfolio - Dynamic Content Script
- * 保持元气活泼的同时，确保硬核内容准确无误 🍬
- */
+ * Nana's Portfolio - Master Dynamic Script 🍭 
 
+// 1. 完整的翻译配置（包含所有实习、项目、数据细节）
 const translations = {
     zh: {
         langBtn: "English Version",
@@ -28,7 +27,7 @@ const translations = {
         p2Btn1: "📄 研究论文.pdf",
         p2Btn2: "🛠️ 系统说明.pdf",
         
-        // 项目 3: 疫苗接种
+        // 项目 3: 疫苗接种 (硬核数据保留)
         p3Title: "疫苗接种服务诉求分析 💉",
         p3Desc: "清洗 3.1w+ 条热线数据，朴素贝叶斯分类准确率 92%，产出 6 项闭环建议。",
         
@@ -71,7 +70,7 @@ const translations = {
 let currentLang = 'zh';
 
 /**
- * 滚动检测函数：让卡片“跳”出来
+ * 2. 滚动检测函数：让带有 .reveal 类的元素“跳”出来
  */
 function handleReveal() {
     const reveals = document.querySelectorAll(".reveal");
@@ -79,7 +78,7 @@ function handleReveal() {
 
     reveals.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 120; // 提前120px触发动画
+        const elementVisible = 120; // 元素进入视窗 120px 后触发
 
         if (elementTop < windowHeight - elementVisible) {
             el.classList.add("active");
@@ -88,85 +87,89 @@ function handleReveal() {
 }
 
 /**
- * 核心更新函数
+ * 3. 核心内容更新函数
  */
 function updateContent() {
     const lang = translations[currentLang];
     const isEn = currentLang === 'en';
 
     // 切换按钮文字
-    document.getElementById('lang-toggle').innerText = lang.langBtn;
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) langToggle.innerText = lang.langBtn;
     
     // 更新 Hero 区域
-    document.getElementById('hero-name').innerText = lang.heroName;
-    document.getElementById('hero-tagline').innerText = lang.heroTagline;
-    document.getElementById('badge1').innerText = lang.badge1;
-    document.getElementById('badge2').innerText = lang.badge2;
-    document.getElementById('badge3').innerText = lang.badge3;
+    if (document.getElementById('hero-name')) document.getElementById('hero-name').innerText = lang.heroName;
+    if (document.getElementById('hero-tagline')) document.getElementById('hero-tagline').innerText = lang.heroTagline;
+    if (document.getElementById('badge1')) document.getElementById('badge1').innerText = lang.badge1;
+    if (document.getElementById('badge2')) document.getElementById('badge2').innerText = lang.badge2;
+    if (document.getElementById('badge3')) document.getElementById('badge3').innerText = lang.badge3;
 
     // 更新各版块标题
-    document.getElementById('title-skills').innerText = lang.titleSkills;
-    document.getElementById('title-projects').innerText = lang.titleProjects;
-    document.getElementById('title-exp').innerText = lang.titleExp;
+    if (document.getElementById('title-skills')) document.getElementById('title-skills').innerText = lang.titleSkills;
+    if (document.getElementById('title-projects')) document.getElementById('title-projects').innerText = lang.titleProjects;
+    if (document.getElementById('title-exp')) document.getElementById('title-exp').innerText = lang.titleExp;
 
     // 更新项目 1
-    document.getElementById('p1-title').innerText = lang.p1Title;
-    document.getElementById('p1-desc').innerHTML = lang.p1Desc;
+    if (document.getElementById('p1-title')) document.getElementById('p1-title').innerText = lang.p1Title;
+    if (document.getElementById('p1-desc')) document.getElementById('p1-desc').innerHTML = lang.p1Desc;
 
     // 更新项目 2 及双文件按钮
-    document.getElementById('p2-title').innerText = lang.p2Title;
-    document.getElementById('p2-desc').innerHTML = lang.p2Desc;
+    if (document.getElementById('p2-title')) document.getElementById('p2-title').innerText = lang.p2Title;
+    if (document.getElementById('p2-desc')) document.getElementById('p2-desc').innerHTML = lang.p2Desc;
     
-    // 兼容多种按钮类名写法 (btn-file 或 btn-cute-sm)
+    // 匹配项目2下方的两个下载按钮 (类名需包含 btn-file 或 btn-cute-sm)
     const fileLinks = document.querySelectorAll('.btn-cute-sm, .btn-file');
-    // 假设前两个按钮是项目2的下载链接
     if (fileLinks.length >= 2) {
         fileLinks[0].innerText = lang.p2Btn1;
         fileLinks[1].innerText = lang.p2Btn2;
     }
 
     // 更新项目 3
-    if(document.getElementById('p3-title')) {
+    if (document.getElementById('p3-title')) {
         document.getElementById('p3-title').innerText = lang.p3Title;
         document.getElementById('p3-desc').innerText = lang.p3Desc;
     }
 
     // 页脚内容
     const footerP = document.querySelector('.footer p:first-child');
-    if(footerP) footerP.innerText = lang.footerText;
+    if (footerP) footerP.innerText = lang.footerText;
 
-    // 为全页面切换语言样式
+    // 切换模式类名
     document.body.className = isEn ? 'en-mode' : 'zh-mode';
 
-    // 切换语言后，重新计算一次滚动位置，防止动画失效
+    // 切换语言后，重新触发一次动画检测，防止切换后内容消失
     handleReveal();
 }
 
 /**
- * 监听器初始化
+ * 4. 事件监听与初始化
  */
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. 初始化内容
+    // A. 初始内容渲染
     updateContent();
 
-    // 2. 监听语言切换按钮
-    document.getElementById('lang-toggle').addEventListener('click', function() {
-        this.style.transform = "scale(0.9)";
-        setTimeout(() => {
-            this.style.transform = "scale(1)";
-            currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            updateContent();
-            // 自动平滑滚动到顶部
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 150);
-    });
+    // B. 语言切换按钮逻辑
+    const langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+        langBtn.addEventListener('click', function() {
+            // 点击时的 Q 弹动画反馈
+            this.style.transform = "scale(0.9)";
+            setTimeout(() => {
+                this.style.transform = "scale(1)";
+                currentLang = currentLang === 'zh' ? 'en' : 'zh';
+                updateContent();
+                // 自动平滑滚动到顶部，让面试官看到整体变化
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 150);
+        });
+    }
 
-    // 3. 监听滚动事件
+    // C. 滚动监听
     window.addEventListener("scroll", handleReveal);
     
-    // 初始执行一次滚动检测，防止首屏元素不显示
+    // D. 初始执行一次检测，确保首屏可见内容正常显示
     handleReveal();
 });
 
-// 确保资源加载完毕后再执行一次检测
+// 5. 额外保险：确保所有资源（如图片）加载完后再执行一次位置计算
 window.onload = handleReveal;
