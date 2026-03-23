@@ -44,6 +44,8 @@ const translations = {
         exp4Title: "北京中科始创科技 🧪",
         exp4Role: "内容运营",
         exp4Content: "<p>🔍 将复杂科研信息结构化，应用“信息前置”模板提升完读率。</p>",
+        contactEmail: "lvnana1206@163.com",
+        contactPhone: "联系电话: +86 153-3931-4431",
         footerText: "跟 Nana 一起探索 AI 的无限可能吧！🍭"
     },
     en: {
@@ -86,6 +88,8 @@ const translations = {
         exp4Title: "Zhongke Shichuang Tech 🧪",
         exp4Role: "Content Operations",
         exp4Content: "<p>Structured complex research data into multi-media content.</p>",
+        contactEmail: "lvnana1206@163.com",
+        contactPhone: "Phone: +86 153-3931-4431",
         footerText: "Explore the future of AI with Nana! 🍭"
     }
 };
@@ -182,6 +186,8 @@ function updateContent() {
         'exp2-title', 'exp2-role', 'exp2-content',
         'exp3-title', 'exp3-role', 'exp3-content',
         'exp4-title', 'exp4-role', 'exp4-content'
+        'contact-email', 'contact-phone', 
+        'footer-text'
     ];
 
     allIds.forEach(id => {
