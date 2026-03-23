@@ -67,7 +67,7 @@ body {
     font-size: 1.3rem; 
     color: #3182CE; /* 商务蓝 */
     font-weight: 600;
-    margin-bottom: 60px; /* 增加下方间距，撑开与标签的距离 */
+    margin-bottom: 80px; /* 增加下方间距，撑开与标签的距离 */
     letter-spacing: 1px;
 }
 
