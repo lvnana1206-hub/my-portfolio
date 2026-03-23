@@ -73,7 +73,7 @@ const translations = {
         heroName: "Nana Lyu 🎀",
         heroTagline: "AI Product Operations | User Growth | Content Strategy",
         badge1: "🌈 Creative Solver",
-        badge2: "🤝 Cross-functional Coordinator",
+        badge2: "🤝 Cross-functional Collaborator",
         badge3: "📊 Data-Driven",
         
         // Titles
@@ -241,4 +241,42 @@ function initBGM() {
 document.addEventListener("DOMContentLoaded", () => {
     initBGM(); // 启动音乐逻辑
     // ... 其他代码
+});
+let currentLang = 'zh';
+
+function updateContent() {
+    const lang = translations[currentLang];
+    
+    // 确保这个 ids 数组里包含 'badge2'
+    const ids = [
+        'lang-toggle', 'hero-name', 'hero-tagline', 
+        'badge1', 'badge2', 'badge3', 
+        'title-edu', 'title-skills', 'title-projects', 'title-exp',
+        'footer-text'
+    ];
+
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        
+        // 自动转换 ID 到 Key (例如 badge2 对应 badge2)
+        let key = id.split('-').map((word, i) => i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)).join('');
+        if (id === 'lang-toggle') key = 'langBtn';
+        
+        const content = lang[key];
+        if (content) {
+            el.innerHTML = content; // 使用 innerHTML 确保表情符号正常显示
+        }
+    });
+
+    document.body.className = currentLang + '-mode';
+}
+
+// 初始化运行
+document.addEventListener("DOMContentLoaded", () => {
+    updateContent();
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+        currentLang = currentLang === 'zh' ? 'en' : 'zh';
+        updateContent();
+    });
 });
