@@ -1,0 +1,100 @@
+
+
+/* 基础设置 */
+:root {
+    --primary-gradient: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 100%); /* 粉蓝渐变 */
+    --accent-purple: #9575cd;
+    --soft-pink: #f06292;
+    --text-color: #455a64;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: var(--text-color);
+    background: #fdfdfd;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* 语言切换按钮 */
+.lang-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#lang-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    clip-path: ellipse(100% 80% at 50% 20%);
+}
+
+.hero h1 { font-size: 3.5rem; color: var(--accent-purple); margin-bottom: 10px; }
+.tagline { font-size: 1.5rem; font-weight: 300; color: var(--soft-pink); }
+
+/* 卡片设计 */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 50px 10%;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(149, 117, 205, 0.2);
+}
+
+.card .icon { font-size: 3rem; margin-bottom: 15px; }
+
+/* 按钮样式 */
+.btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.primary { background: var(--accent-purple); color: white; }
+.secondary { border: 2px solid var(--accent-purple); color: var(--accent-purple); }
+
+/* 技能标签 */
+.skill-tags span {
+    background: #f1f8ff;
+    padding: 8px 15px;
+    border-radius: 15px;
+    margin: 5px;
+    display: inline-block;
+    color: #0366d6;
+}
+
+.section-title { text-align: center; margin-top: 60px; color: var(--accent-purple); }
