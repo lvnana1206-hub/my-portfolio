@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>吕娜娜 Nana | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+<body class="zh-mode">
     <nav class="nav-bar">
-        <div class="logo">NANA.LYU</div>
+        <div class="logo">✨ NANA.LYU</div>
         <button id="lang-toggle">English Version</button>
     </nav>
 
     <header class="hero">
         <div class="hero-container">
-            <div class="photo-frame">
-                <img src="吕娜娜 五寸 日常.jpg" alt="Nana Lyu">
+            <div class="photo-wrapper">
+                <img src="吕娜娜 五寸 日常.jpg" alt="Nana Lyu" class="avatar">
+                <div class="floating-icon">🎈</div>
             </div>
             <div class="hero-text">
-                <h1 id="hero-name">吕娜娜 (Nana)</h1>
+                <h1 id="hero-name">吕娜娜 Nana 🎀</h1>
                 <p id="hero-tagline" class="tagline">AI 产品运营 | 用户增长 | 内容策略</p>
                 <div class="personal-badges">
-                    <span class="badge" id="badge1">💡 创新问题解决者</span>
+                    <span class="badge" id="badge1">🌈 创新问题解决者</span>
                     <span class="badge" id="badge2">🤝 跨职能协同专家</span>
                     <span class="badge" id="badge3">📊 数据驱动决策</span>
                 </div>
@@ -31,156 +23,142 @@
     </header>
 
     <section class="section container">
-        <h2 class="section-title" id="title-skills">技能与核心竞争力</h2>
+        <h2 class="section-title" id="title-skills">🌟 技能与核心竞争力</h2>
         <div class="skills-grid">
-            <div class="skill-card">
-                <h3 id="h-lang">语言能力</h3>
+            <div class="skill-card color-1">
+                <h3 id="h-lang">📢 语言能力</h3>
                 <ul id="list-lang">
-                    <li><b>英语：</b>专业八级 (TEM-8)，精通商务书面及口语。</li>
-                    <li><b>法语：</b>公共法语四级，具备良好的听说读写能力。</li>
+                    <li><b>英语：</b>TEM-8，精通商务书面及口语。</li>
+                    <li><b>法语：</b>公共四级，具备良好听说读写。</li>
                 </ul>
             </div>
-            <div class="skill-card">
-                <h3 id="h-tech">专业技能</h3>
-                <p id="p-tech">Python (Pandas/NLP/朴素贝叶斯)、R 语言 (自动化流水线)、SQL、统计建模 (多元回归)、Excel 高级分析。</p>
+            <div class="skill-card color-2">
+                <h3 id="h-tech">💻 专业技能</h3>
+                <p id="p-tech">Python (NLP/朴素贝叶斯)、R 语言 (自动化流水线)、SQL、统计建模 (多元回归)、Excel 高级分析。</p>
             </div>
-            <div class="skill-card">
-                <h3 id="h-soft">通用软技能</h3>
+            <div class="skill-card color-3">
+                <h3 id="h-soft">🧠 通用软技能</h3>
                 <p id="p-soft">跨职能协同、B端资源拓展、用户洞察、SOP 搭建、危机处理。</p>
             </div>
         </div>
     </section>
-<section class="section grey-bg">
-    <h2 class="section-title" id="title-projects">核心项目经历</h2>
-    
-    <div class="project-item">
-        <div class="project-info">
-            <h3 id="p1-title">AI 用户洞察分析平台 (Nana Insight AI)</h3>
-            <ul class="desc-list">
-                <li><b>全流程设计：</b>构建“数据输入—NLP 分析—可视化—洞察输出”完整流程，支持本地生活及 App 评价场景。</li>
-                <li><b>用户需求识别：</b>基于文本分词与 TF-IDF 算法，实现关键词提取与情绪识别，自动定位配送、客服等负面集中点。</li>
-                <li><b>AI 决策建议：</b>基于分析结果自动生成产品优化建议，实现从数据分析到决策支持的闭环。</li>
-                <li><b>交互设计：</b>基于 Streamlit 搭建交互式数据看板（指标卡、词云、分布图），提升业务应用效率。</li>
-            </ul>
-            <a href="https://nana-insight.streamlit.app/" target="_blank" class="btn">在线 Demo 🔗</a>
-        </div>
-        <div class="video-wrapper">
-            <div class="macbook-frame">
-                <video autoplay muted loop playsinline>
-                    <source src="屏幕录制 2026-03-23 115044.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </div>
 
-    <div class="project-item reverse">
-        <div class="project-info">
-            <h3 id="p2-title">跨媒介叙事与情感分析系统 (R + NLP)</h3>
-            <ul class="desc-list">
-                <li><b>内容结构化建模：</b>运用叙事学理论对原著与电影版进行对标拆解，将非结构化文学内容转化为可量化的结构模型。</li>
-                <li><b>情感趋势挖掘：</b>基于 R 语言搭建自动化流水线，利用 NRC/Bing 词库构建动态情感模型，量化追踪角色心理演变趋势。</li>
-                <li><b>数据驱动策略：</b>分析叙事频率与情感强度分布，为内容创作中的节奏控制、脚本切分及爆点预测提供客观支撑。</li>
-            </ul>
-            <div class="paper-links">
-                <a href="Nana 520141910007. digital humanities.pdf" target="_blank" class="btn-sm">Digital Humanities.pdf 📄</a>
+    <section class="section bubble-bg">
+        <div class="container">
+            <h2 class="section-title" id="title-projects">🚀 核心项目经历</h2>
+            
+            <div class="project-item-v2">
+                <div class="project-info card-white">
+                    <h3 id="p1-title">AI 用户洞察分析平台 🤖</h3>
+                    <ul id="p1-desc" class="desc-list">
+                        <li><b>全流程设计：</b>构建“数据输入—NLP 分析—可视化—洞察输出”完整流程，支持本地生活及 App 评价场景。</li>
+                        <li><b>用户需求识别：</b>基于文本分词与 TF-IDF 算法，实现关键词提取与情绪识别，自动定位配送、客服等负面集中点。</li>
+                        <li><b>AI 决策建议：</b>基于分析结果自动生成产品优化建议，实现从数据分析到决策支持的闭环。</li>
+                        <li><b>交互设计：</b>基于 Streamlit 搭建交互式数据看板（指标卡、词云、分布图），提升业务应用效率。</li>
+                    </ul>
+                    <a href="https://nana-insight.streamlit.app/" target="_blank" class="btn-cute">去看看 Demo ✨</a>
+                </div>
+                <div class="demo-window">
+                    <div class="window-bar">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <video autoplay muted loop playsinline>
+                        <source src="屏幕录制 2026-03-23 115044.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="project-item">
-        <div class="project-info">
-            <h3 id="p3-title">上海预防接种服务公众诉求分析</h3>
-            <ul class="desc-list">
+            <div class="project-card card-white mt-large">
+                <h3 id="p2-title">跨媒介叙事分析系统 (R + NLP) 📚</h3>
+                <ul id="p2-desc" class="desc-list">
+                    <li><b>内容结构化建模：</b>运用叙事学理论对原著与电影版进行对标拆解，将非结构化文学内容转化为可量化的结构模型。</li>
+                    <li><b>情感趋势挖掘：</b>基于 R 语言搭建自动化流水线，利用 NRC/Bing 词库构建动态情感模型，量化追踪角色心理演变趋势。</li>
+                    <li><b>数据驱动策略：</b>分析叙事频率与情感强度分布，为内容创作中的节奏控制、脚本切分及爆点预测提供客观支撑。</li>
+                </ul>
+                <div class="links-group">
+                    <a href="Nana 520141910007. digital humanities.pdf" target="_blank" class="btn-file">📄 研究论文.pdf</a>
+                    <a href="系统说明文档.pdf" target="_blank" class="btn-file">🛠️ 系统说明.pdf</a>
+                </div>
+            </div>
+
+            <div class="project-card card-white mt-large">
+                <h3 id="p3-title">疫苗接种服务诉求分析 💉</h3>
+                 <ul class="desc-list">
                 <li><b>文本分类建模：</b>清洗 3.1w+ 条热线数据，基于 TF-IDF 与朴素贝叶斯模型实现 8 类主题自动分类，准确率达 92%。</li>
                 <li><b>政策量化研究：</b>构建多元回归模型，量化评估接种点布局对咨询量的影响，并输出 6 项实操性优化建议。</li>
             </ul>
         </div>
     </div>
-</section>
+            </div>
+        </div>
+    </section>
 
     <section class="section container">
-        <h2 class="section-title" id="title-exp">实习与社会实践</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <h3 id="exp-wechat-name">交大思享 (校级官方媒体)</h3>
-                        <span class="date">2023.12 - 2025.07</span>
-                    </div>
-                    <p class="role-title" id="exp-wechat-role">内容运营负责人</p>
-                    <p id="exp-wechat-desc">主理多个核心专栏，累计阅读 50,000+。通过“信息前置”排版实验，产出多篇 5,000+ 爆款推文。</p>
+        <h2 class="section-title" id="title-exp">📅 实习与社会实践</h2>
+        <div class="timeline-v2">
+            <div class="timeline-box">
+                <div class="timeline-time">2025.07</div>
+                <div class="timeline-content card-white">
+                    <h3>交大思享 (校级媒体) 📝</h3>
+                    <p class="role-tag">内容运营负责人</p>
+                    <p>理多个核心专栏，累计阅读 50,000+。通过“信息前置”排版实验，产出多篇 5,000+ 爆款推文</p>
                     <div class="links-group">
-                        <a href="https://mp.weixin.qq.com/s/uZGDhxeugj7MxgW0f1tbJg" target="_blank" class="btn-xs">交大梗指南</a>
+                        <a href="https://mp.weixin.qq.com/s/uZGDhxeugj7MxgW0f1tbJg" target="_blank" class="btn-xs">梗指南</a>
                         <a href="https://mp.weixin.qq.com/s/vNKEoXDd0CBnB1vrdNtF9A" target="_blank" class="btn-xs">人物访谈</a>
                         <a href="https://mp.weixin.qq.com/s/CMo2LC9CsaE8Aw6PpIFuUg" target="_blank" class="btn-xs">精选专题</a>
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <h3 id="exp1-name">上海真爱梦想公益基金会</h3>
-                        <span class="date">2024.06 - 2024.09</span>
-                    </div>
-                    <p class="role-title" id="exp1-role">去远方项目运营</p>
-                    <p id="exp1-desc">组织跟踪 6 个研学项目。对接施耐德、联想等 17 家企业资源，优化活动 SOP，提升转化效率。</p>
+            <div class="timeline-box">
+                <div class="timeline-time">2024.09</div>
+                <div class="timeline-content card-white">
+                    <h3>真爱梦想基金会 🕊️</h3>
+                    <p class="role-tag">去远方项目运营</p>
+                    <p>组织跟踪 6 个研学项目。对接施耐德、联想等 17 家企业资源，优化活动 SOP，提升转化效率。</p>
                 </div>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <h3 id="exp3-name">北京中科始创科技</h3>
-                        <span class="date">2023.11 - 2024.02</span>
-                    </div>
-                    <p class="role-title" id="exp3-role">内容运营</p>
+            <div class="timeline-box">
+                <div class="timeline-time">2024.02</div>
+                <div class="timeline-content card-white">
+                    <h3>中科始创科技 🧪</h3>
+                    <p class="role-tag">内容运营</p>
+                    <p>科研信息结构化，负责两大板块：</p>
                     <p id="exp3-desc">将复杂科研信息结构化，产出逻辑清晰的多媒介内容。应用“信息前置”模板提升完读率。</p>
                     <div class="links-group">
-                        <a href="https://mp.weixin.qq.com/s/_AAHUvvrt6Ap5g531UWw9A" target="_blank" class="btn-xs">大国重器专题</a>
-                        <a href="https://mp.weixin.qq.com/s/Mew-7ROVV_DYfNtkIpGuIQ" target="_blank" class="btn-xs">科研力量巡礼</a>
+                        <a href="https://mp.weixin.qq.com/s/_AAHUvvrt6Ap5g531UWw9A" target="_blank" class="btn-xs">大国重器</a>
+                        <a href="https://mp.weixin.qq.com/s/Mew-7ROVV_DYfNtkIpGuIQ" target="_blank" class="btn-xs">科研巡礼</a>
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content card">
-                    <div class="card-header">
-                        <h3 id="exp2-name">星猿哲科技 (XYZ Robotics)</h3>
-                        <span class="date">2023.09 - 2023.11</span>
-                    </div>
-                    <p class="role-title" id="exp2-role">政府事务管理</p>
+            <div class="timeline-box">
+                <div class="timeline-time">2023.11</div>
+                <div class="timeline-content card-white">
+                    <h3>星猿哲 (XYZ Robotics) 🤖</h3>
+                    <p class="role-tag">政府事务管理</p>
                     <p id="exp2-desc">主导上海市“创新产品目录”申报，100% 通过率，助力企业获得行业资质背书。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section grey-bg container-full">
+    <section class="section bubble-bg">
         <div class="container">
-            <h2 class="section-title" id="title-sjtu">SJTU Life (青春足迹)</h2>
-            <div class="sjtu-tabs">
-                <div class="tab-item card">
-                    <h4 id="tab-zf">上海交通大学“助飞计划”</h4>
-                    <p id="desc-zf">领导 30 人团队走访 18 城，设计标准化流程，确保资助政策 100% 精准触达。</p>
+            <h2 class="section-title">🐾 SJTU Life</h2>
+            <div class="sjtu-grid">
+                <div class="tab-card">
+                    <h4>助飞计划 ✈️</h4>
+                    <p>领导 30 人团队走访 18 城，设计标准化流程，确保资助政策 100% 精准触达。</p>
                 </div>
-                <div class="tab-item card">
-                    <h4 id="tab-cx">上海交通大学晨曦公益服务社 (副社长)</h4>
-                    <p id="desc-cx">统筹 10+ 项目与 1000+ 志愿者，建立分层培训体系，获“十佳公益团队”称号。</p>
+                <div class="tab-card">
+                    <h4>晨曦公益 (副社长) 🌅</h4>
+                    <p>统筹 10+ 项目与 1000+ 志愿者，建立分层培训体系，获“十佳公益团队”称号。”</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p id="footer-text">期待与你一起创造有价值的产品与合作。</p>
+        <p>跟 Nana 一起探索 AI 的无限可能吧！🍭</p>
         <p>Email: lvnana1206@163.com</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
-</html>
