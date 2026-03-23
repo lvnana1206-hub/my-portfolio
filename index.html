@@ -7,45 +7,49 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body class="zh-mode">
+<body>
     <nav class="nav-bar">
         <div class="logo">NANA.LYU</div>
         <button id="lang-toggle">English Version</button>
     </nav>
 
     <header class="hero">
-        <div class="hero-content">
-            <h1 id="name">吕娜娜 (Nana)</h1>
-            <p id="tagline" class="tagline">AI 产品运营 | 用户增长 | 商务拓展 (BD)</p>
-            <div class="personal-badges">
-                <span class="badge" data-key="badge1">💡 创新问题解决者</span>
-                <span class="badge" data-key="badge2">🤝 资深谈判专家</span>
-                <span class="badge" data-key="badge3">🌍 跨文化沟通者</span>
+        <div class="hero-container">
+            <div class="photo-frame">
+                <img src="吕娜娜 五寸 日常.jpg" alt="Nana Lyu">
+            </div>
+            <div class="hero-text">
+                <h1 id="hero-name">吕娜娜 (Nana)</h1>
+                <p id="hero-tagline" class="tagline">AI 产品运营 | 用户增长 | 内容策略</p>
+                <div class="personal-badges">
+                    <span class="badge" id="badge1">💡 创新问题解决者</span>
+                    <span class="badge" id="badge2">🤝 跨职能协同专家</span>
+                    <span class="badge" id="badge3">📊 数据驱动决策</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="section">
+    <section class="section container">
         <h2 class="section-title" id="title-skills">技能与核心竞争力</h2>
-        <div class="skills-container">
+        <div class="skills-grid">
             <div class="skill-card">
                 <h3 id="h-lang">语言能力</h3>
                 <ul id="list-lang">
-                    <li><b>英语：</b>专业八级 (TEM-8)，精通商务书面及口语，胜任全英文工作环境。</li>
+                    <li><b>英语：</b>专业八级 (TEM-8)，精通商务书面及口语。</li>
                     <li><b>法语：</b>公共法语四级，具备良好的听说读写能力。</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <h3 id="h-tech">专业技能</h3>
-                <p id="p-tech">Python (Pandas / NLTK / 文本分类 / TF-IDF)、R 语言 (tidytext / ggplot2)、数据可视化、统计建模 (多元回归)、Excel 高级分析。</p>
+                <p id="p-tech">Python (Pandas/NLP/朴素贝叶斯)、R 语言 (自动化流水线)、SQL、统计建模 (多元回归)、Excel 高级分析。</p>
             </div>
             <div class="skill-card">
                 <h3 id="h-soft">通用软技能</h3>
-                <p id="p-soft">跨职能协同、B端资源拓展、用户洞察、社群运营 SOP 搭建、危机公关处理。</p>
+                <p id="p-soft">跨职能协同、B端资源拓展、用户洞察、SOP 搭建、危机处理。</p>
             </div>
         </div>
     </section>
-
 <section class="section grey-bg">
     <h2 class="section-title" id="title-projects">核心项目经历</h2>
     
@@ -93,102 +97,88 @@
         </div>
     </div>
 </section>
-    
-<section class="section">
-    <h2 class="section-title" id="title-experience">实习与社会实践 (Experience)</h2>
-    <div class="timeline">
-        
-        <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content card">
-                <div class="card-header">
-                    <h3>交大思享 (校级官方媒体)</h3>
-                    <span class="date">2023.12 - 2025.07</span>
+
+    <section class="section container">
+        <h2 class="section-title" id="title-exp">实习与社会实践</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content card">
+                    <div class="card-header">
+                        <h3 id="exp-wechat-name">交大思享 (校级官方媒体)</h3>
+                        <span class="date">2023.12 - 2025.07</span>
+                    </div>
+                    <p class="role-title" id="exp-wechat-role">内容运营负责人</p>
+                    <p id="exp-wechat-desc">主理多个核心专栏，累计阅读 50,000+。通过“信息前置”排版实验，产出多篇 5,000+ 爆款推文。</p>
+                    <div class="links-group">
+                        <a href="https://mp.weixin.qq.com/s/uZGDhxeugj7MxgW0f1tbJg" target="_blank" class="btn-xs">交大梗指南</a>
+                        <a href="https://mp.weixin.qq.com/s/vNKEoXDd0CBnB1vrdNtF9A" target="_blank" class="btn-xs">人物访谈</a>
+                        <a href="https://mp.weixin.qq.com/s/CMo2LC9CsaE8Aw6PpIFuUg" target="_blank" class="btn-xs">精选专题</a>
+                    </div>
                 </div>
-                <h4 class="role-title">内容运营负责人</h4>
-                <p class="exp-body">
-                    主理多个核心专栏，累计阅读 50,000+。擅长结构化内容生产，通过“信息前置”排版实验提升阅读效率，产出多篇 5,000+ 爆款推文。
-                </p>
-                <a href="#featured-wechat" class="btn-sm">查看具体成果卡片 ↓</a>
             </div>
-        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content card">
-                <div class="card-header">
-                    <h3>上海真爱梦想公益基金会</h3>
-                    <span class="date">2024.06 - 2024.09</span>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content card">
+                    <div class="card-header">
+                        <h3 id="exp1-name">上海真爱梦想公益基金会</h3>
+                        <span class="date">2024.06 - 2024.09</span>
+                    </div>
+                    <p class="role-title" id="exp1-role">去远方项目运营</p>
+                    <p id="exp1-desc">组织跟踪 6 个研学项目。对接施耐德、联想等 17 家企业资源，优化活动 SOP，提升转化效率。</p>
                 </div>
-                <h4 class="role-title">去远方项目运营</h4>
-                <p class="exp-body">对接 17 家企业资源，联动产品团队开发场景化内容，推动活动转化率增长。</p>
             </div>
-        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content card">
-                <div class="card-header">
-                    <h3>星猿哲科技 (XYZ Robotics)</h3>
-                    <span class="date">2023.09 - 2023.11</span>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content card">
+                    <div class="card-header">
+                        <h3 id="exp3-name">北京中科始创科技</h3>
+                        <span class="date">2023.11 - 2024.02</span>
+                    </div>
+                    <p class="role-title" id="exp3-role">内容运营</p>
+                    <p id="exp3-desc">将复杂科研信息结构化，产出逻辑清晰的多媒介内容。应用“信息前置”模板提升完读率。</p>
+                    <div class="links-group">
+                        <a href="https://mp.weixin.qq.com/s/_AAHUvvrt6Ap5g531UWw9A" target="_blank" class="btn-xs">大国重器专题</a>
+                        <a href="https://mp.weixin.qq.com/s/Mew-7ROVV_DYfNtkIpGuIQ" target="_blank" class="btn-xs">科研力量巡礼</a>
+                    </div>
                 </div>
-                <h4 class="role-title">政府事务管理</h4>
-                <p class="exp-body">主导申报上海市“创新产品目录”，实现 100% 通过率，助力企业获得行业资质背书。</p>
             </div>
-        </div>
-    </div>
-</section>
 
-<section id="featured-wechat" class="section grey-bg">
-    <h2 class="section-title">交大思享：精选作品集</h2>
-    <div class="wechat-featured-grid">
-        <a href="https://mp.weixin.qq.com/s/uZGDhxeugj7MxgW0f1tbJg" class="featured-card" target="_blank">
-            <div class="card-tag gold">爆款案例</div>
-            <div class="card-info">
-                <h4>【交大梗指南】</h4>
-                <p>校园文化结构化输出，精准捕捉共鸣点。</p>
-            </div>
-        </a>
-        </div>
-</section>
-
-
-<section class="section">
-    <h2 class="section-title" id="title-sjtu">SJTU Life (青春足迹)</h2>
-    <div class="sjtu-tabs">
-        
-        <div class="tab-item">
-            <h4 id="tab-zf">上海交通大学“助飞计划”</h4>
-            <div id="desc-zf" class="exp-body">
-                <p><b>统筹复杂落地执行：</b>领导 30 人团队，18 天完成甘肃 18 城、100+ 新生家庭实地走访，确保政策 100% 精准触达。</p>
-                <p><b>流程设计与效率提升：</b>设计“培训-规划-执行-复盘”标准化流程，优化跨区域协作，显著提升团队单日走访效率。</p>
-            </div>
-        </div>
-
-        <div class="tab-item">
-            <h4 id="tab-cx">上海交通大学晨曦公益服务社 (副社长)</h4>
-            <div id="desc-cx" class="exp-body">
-                <p><b>规模化项目管理：</b>统筹 10+ 大型志愿项目，设计全流程 SOP，协调 1000+ 志愿者完成 5000h+ 服务，获校级“十佳公益团队”。</p>
-                <p><b>精准化志愿者运营：</b>基于场景划分 4 类群体，定制分层培训体系，推动服务匹配度提升 40%。</p>
-            </div>
-            
-            <div class="project-links-grid">
-                <span class="label">查看合作成果：</span>
-                <div class="btn-group">
-                    <a href="https://mp.weixin.qq.com/s/rGoF2rNy2o2KPcdNmbyBUQ" target="_blank" class="btn-xs">科普特辑</a>
-                    <a href="https://mp.weixin.qq.com/s/bTZXOeWC85Wmxuxe9LxclA" target="_blank" class="btn-xs">爱心家教</a>
-                    <a href="https://mp.weixin.qq.com/s/-Ikh-IwFA0mpJ1dCa_6G9Q" target="_blank" class="btn-xs">太阳花助学</a>
-                    <a href="https://mp.weixin.qq.com/s/VZibdGMGVseR2uaUcw0R7A" target="_blank" class="btn-xs">蓝信封</a>
-                    <a href="https://mp.weixin.qq.com/s/Zb5A4H9C0vD9zwhe665OPg" target="_blank" class="btn-xs">公益纪实</a>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content card">
+                    <div class="card-header">
+                        <h3 id="exp2-name">星猿哲科技 (XYZ Robotics)</h3>
+                        <span class="date">2023.09 - 2023.11</span>
+                    </div>
+                    <p class="role-title" id="exp2-role">政府事务管理</p>
+                    <p id="exp2-desc">主导上海市“创新产品目录”申报，100% 通过率，助力企业获得行业资质背书。</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="section grey-bg container-full">
+        <div class="container">
+            <h2 class="section-title" id="title-sjtu">SJTU Life (青春足迹)</h2>
+            <div class="sjtu-tabs">
+                <div class="tab-item card">
+                    <h4 id="tab-zf">上海交通大学“助飞计划”</h4>
+                    <p id="desc-zf">领导 30 人团队走访 18 城，设计标准化流程，确保资助政策 100% 精准触达。</p>
+                </div>
+                <div class="tab-item card">
+                    <h4 id="tab-cx">上海交通大学晨曦公益服务社 (副社长)</h4>
+                    <p id="desc-cx">统筹 10+ 项目与 1000+ 志愿者，建立分层培训体系，获“十佳公益团队”称号。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
-        <p id="footer-cta">期待与你一起创造有价值的产品与合作。</p>
-        <p>Email: lvnana1206@163.com | LinkedIn: Nana Lyu</p>
+        <p id="footer-text">期待与你一起创造有价值的产品与合作。</p>
+        <p>Email: lvnana1206@163.com</p>
     </footer>
 
     <script src="script.js"></script>
