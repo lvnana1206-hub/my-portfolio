@@ -66,12 +66,12 @@
     justify-content: center; 
     gap: 15px;
     /* 需求：联系方式和下面三个标签栏行距拉开 */
-    margin: 40px 0 110px 0 !important; 
+    margin: 20px 0 110px 0 !important; 
     flex-wrap: wrap;
 }
 
 .contact-item { 
-    background: white; padding: 12px 25px; border-radius: 50px; 
+    background: white; padding: 12px 25px; border-radius: 10px; 
     box-shadow: 8px 8px 0px var(--nana-pink); 
     display: flex; align-items: center; gap: 8px;
     border: 1px solid rgba(0,0,0,0.05);
