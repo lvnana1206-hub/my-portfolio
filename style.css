@@ -1,6 +1,6 @@
 /* =========================================
    Nana's Portfolio - Professional BD Style 🍭
-   修正：求职定位同步、全量去重、间距深度优化
+   Final Debug: 修复间距冲突、找回小窗动画
    ========================================= */
 
 /* --- 1. 全局变量与基础设定 --- */
@@ -44,8 +44,12 @@ body {
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
 .logo { font-weight: 700; font-size: 1.3rem; color: #4A5568; letter-spacing: 1px; }
 
-/* --- 3. Hero 区域 (修正间距与定位) --- */
-.hero { text-align: center; padding: 100px 0 80px 0; }
+/* --- 3. Hero 区域 (修正重复定义导致的间距失效) --- */
+.hero { 
+    text-align: center; 
+    padding: 120px 0 80px 0; /* 增加顶部留白 */
+}
+
 .photo-wrapper { margin-bottom: 40px; }
 .avatar {
     width: 180px; height: 180px; border-radius: 45px;
@@ -56,25 +60,35 @@ body {
 }
 .avatar:hover { transform: scale(1.05) rotate(2deg); }
 
-#hero-name { font-size: 2.6rem; margin-bottom: 15px; color: var(--text-black); }
+#hero-name { font-size: 2.6rem; margin-bottom: 20px; color: var(--text-black); }
 
-/* 重点：求职方向样式 */
+/* 重点修复：联系方式区域与下方标签的间距 */
 #hero-tagline { 
     font-size: 1.3rem; 
     color: #3182CE; /* 商务蓝 */
     font-weight: 600;
-    margin-bottom: 40px; 
+    margin-bottom: 60px; /* 增加下方间距，撑开与标签的距离 */
     letter-spacing: 1px;
 }
 
-.badge-group { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.badge-group { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+    margin-top: 20px; /* 辅助微调 */
+}
+
 .badge { 
-    background: var(--nana-yellow); border: 1.8px solid var(--dark-grey); 
-    padding: 8px 22px; border-radius: 50px; font-weight: bold; 
+    background: var(--nana-yellow); 
+    border: 1.8px solid var(--dark-grey); 
+    padding: 8px 22px; 
+    border-radius: 50px; 
+    font-weight: bold; 
     box-shadow: 5px 5px 0px var(--nana-pink);
 }
 
-/* --- 4. 通用卡片与 Reveal --- */
+/* --- 4. 动画与通用卡片 --- */
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -85,50 +99,64 @@ body {
 }
 .card-white:hover { transform: translateY(-8px); box-shadow: 15px 15px 0px var(--nana-blue); }
 
-/* --- 5. 实习经历 (时间轴间距核心修复) --- */
+/* --- 5. 核心项目经历：电脑小窗动画 (修复不见了的问题) --- */
+.project-item-v2 {
+    display: flex; gap: 40px; align-items: center; flex-wrap: wrap; margin-bottom: 80px;
+}
+
+.demo-window {
+    flex: 1; min-width: 350px; 
+    background: #2d3748; /* 电脑外框深色 */
+    border-radius: 20px; padding: 15px;
+    box-shadow: 15px 15px 0px var(--nana-blue); border: 3px solid var(--white);
+    overflow: hidden; transform: rotate(1deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.demo-window:hover { transform: rotate(0deg) scale(1.03); }
+
+.window-controls { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; }
+.window-controls span { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #ff5f56; } 
+.dot-y { background: #ffbd2e; } 
+.dot-g { background: #27c93f; }
+.window-label { color: #a0aec0; font-size: 12px; margin-left: 10px; font-family: monospace; }
+
+.demo-window video, .demo-window iframe, .demo-window .pdf-preview { 
+    width: 100%; height: 280px; border-radius: 10px; display: block; background: white; border: none; 
+}
+
+/* --- 6. 实习经历时间轴 --- */
 .timeline-v2 {
     position: relative; padding-left: 70px;
     border-left: 6px dashed var(--nana-blue); margin: 60px 0;
 }
-
-.timeline-item-v2 { 
-    position: relative; 
-    margin-bottom: 140px; /* 大呼吸间距 */
-    width: 100%;
-}
+.timeline-item-v2 { position: relative; margin-bottom: 140px; width: 100%; }
 .timeline-item-v2:last-child { margin-bottom: 0; }
-
 .timeline-dot {
     position: absolute; left: -86px; top: 12px;
     width: 26px; height: 26px; background: var(--white);
     border-radius: 50%; border: 6px solid var(--nana-pink); z-index: 2;
 }
-
 .timeline-time {
     display: inline-block; background: var(--nana-blue); color: #2c5282;
     padding: 8px 22px; border-radius: 50px; font-weight: bold;
     margin-bottom: 25px; box-shadow: 4px 4px 0px rgba(208, 232, 255, 0.5);
 }
-
 .role-tag {
     display: inline-block; padding: 5px 15px; border-radius: 12px;
     font-weight: bold; background: #edf2f7; margin: 15px 0;
 }
-
 .desc-list-v2 li { margin-bottom: 18px; padding-left: 10px; list-style-type: none; position: relative; }
 .desc-list-v2 li::before { content: "🍭"; position: absolute; left: -25px; }
 
-/* --- 6. 技能进度条 --- */
+/* --- 7. 技能进度条 --- */
 .skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.progress-bar { 
-    width: 100%; height: 12px; background: #edf2f7; 
-    border-radius: 20px; overflow: hidden; margin-top: 15px;
-}
+.progress-bar { width: 100%; height: 12px; background: #edf2f7; border-radius: 20px; overflow: hidden; margin-top: 15px; }
 .progress-fill { height: 100%; width: 0; transition: width 1.5s ease-in-out; }
 .bar-pink { background: linear-gradient(90deg, #ffdae9, #f687b3); }
 .bar-blue { background: linear-gradient(90deg, #d0e8ff, #4299e1); }
 
-/* --- 7. SJTU 校园卡片 --- */
+/* --- 8. SJTU 校园卡片 --- */
 .sjtu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
 .tab-card {
     background: white; padding: 35px; border-radius: var(--radius-md);
@@ -137,16 +165,11 @@ body {
 }
 .tab-card:hover { transform: translateY(-12px); box-shadow: 15px 15px 0px var(--nana-blue); }
 
-/* --- 8. 页脚联系方式 (修正 Email 与间距) --- */
-.footer { 
-    text-align: center; padding: 100px 0; 
-    background: white; border-top: 1px solid #eee; 
-}
+/* --- 9. 页脚 --- */
+.footer { text-align: center; padding: 100px 0; background: white; border-top: 1px solid #eee; }
 .footer h3 { margin-bottom: 30px; color: var(--text-black); }
-.contact-info { font-size: 1.15rem; margin-bottom: 15px; font-weight: 500; }
-.footer-note { margin-top: 40px; color: #cbd5e0; font-size: 0.9rem; }
 
-/* --- 9. 响应式 --- */
+/* --- 10. 响应式 --- */
 @media (max-width: 768px) {
     .container { padding: 0 25px; }
     .hero { padding: 80px 0 40px 0; }
