@@ -8,7 +8,7 @@ const translations = {
         langBtn: "English Version",
         // 身份与定位 (已修正为商务 BD)
         heroName: "吕娜娜 (Nana) 🎀",
-        heroTagline: "AI 产品运营 | 商务 BD | 用户增长策略",
+        heroTagline: "AI 产品运营 | 海外商务 BD | 用户增长策略",
         
         // 标签云
         badge1: "🌈 创新问题解决者",
@@ -71,6 +71,73 @@ const translations = {
         footerText: "Explore the future of AI with Nana! 🍭"
     }
 };
+const translations = {
+    zh: {
+        titleSkills: "🌟 核心技能储备",
+        skill1: "NLP 洞察 / Prompt Engineering",
+        skill2: "Python (Pandas/NLTK) / R / SQL",
+        skill3: "内容策略 / SOP 流程优化",
+        skill4: "用户分层运营 / 跨职能协同",
+        
+        titleProjects: "🚀 核心项目经历",
+        p1Title: "AI 用户洞察分析平台 (Nana Insight AI) 🤖",
+        p1Desc: `<li><b>全流程设计：</b>构建“数据输入—NLP 分析—可视化—洞察输出”完整流程，支持本地生活及 App 评价场景。</li>
+                 <li><b>用户需求识别：</b>基于文本分词与 TF-IDF 算法，提取关键词与情绪，自动定位配送、客服等负面集中点。</li>
+                 <li><b>AI 决策建议：</b>基于分析结果自动生成产品优化建议，实现从数据分析到决策支持的闭环。</li>
+                 <li><b>交互设计：</b>基于 Streamlit 搭建交互式看板（指标卡、词云图），显著提升业务分析效率。</li>`,
+        p1Btn: "查看 在线 Demo ➔",
+
+        titleExp: "📅 实习与社会实践",
+        exp1Title: "交大思享 (校级官方媒体) 📝",
+        exp1Role: "内容运营负责人",
+        exp1Desc: "✨ 主理多个核心专栏，累计阅读 50,000+。通过“信息前置”排版实验，产出多篇爆款推文。",
+        
+        footer: "跟 Nana 一起探索 AI 的无限可能吧！🍭"
+    },
+    en: {
+        titleSkills: "🌟 Core Skills",
+        skill1: "NLP Insights / Prompt Engineering",
+        skill2: "Python (Pandas/NLTK) / R / SQL",
+        skill3: "Content Strategy / SOP Optimization",
+        skill4: "User Operations / Cross-functional Collab",
+        
+        titleProjects: "🚀 Key Projects",
+        p1Title: "AI User Insight Platform (Nana Insight AI) 🤖",
+        p1Desc: `<li><b>End-to-end Design:</b> Built a "Data-NLP-Viz-Insight" workflow for O2O and App reviews.</li>
+                 <li><b>Need Identification:</b> Extracted keywords/sentiment via TF-IDF to locate pain points in delivery/service.</li>
+                 <li><b>AI Recommendation:</b> Automated product optimization suggestions, closing the loop from data to decision.</li>
+                 <li><b>UI/UX Design:</b> Built interactive dashboards via Streamlit, significantly improving analytical efficiency.</li>`,
+        p1Btn: "Live Demo ➔",
+
+        titleExp: "📅 Experience",
+        exp1Title: "SJTU Thought (Official Media) 📝",
+        exp1Role: "Content Operations Lead",
+        exp1Desc: "✨ Managed core columns with 50,000+ views. Produced viral posts through information-first layout experiments.",
+        
+        footer: "Explore the infinite possibilities of AI with Nana! 🍭"
+    }
+};
+
+// 切换语言的函数
+function updateLanguage(lang) {
+    // 标题类
+    document.getElementById('title-skills').innerText = translations[lang].titleSkills;
+    document.getElementById('title-projects').innerText = translations[lang].titleProjects;
+    document.getElementById('title-exp').innerText = translations[lang].titleExp;
+    
+    // 技能项 (建议给对应的 span 加 id，如 id="s1")
+    if(document.getElementById('s1')) document.getElementById('s1').innerText = translations[lang].skill1;
+    if(document.getElementById('s2')) document.getElementById('s2').innerText = translations[lang].skill2;
+    
+    // 项目1
+    document.getElementById('p1-title').innerText = translations[lang].p1Title;
+    document.getElementById('p1-desc').innerHTML = translations[lang].p1Desc;
+    // 按钮 (建议加 id="p1-btn")
+    if(document.getElementById('p1-btn')) document.getElementById('p1-btn').innerText = translations[lang].p1Btn;
+
+    // 页脚
+    document.getElementById('footer-text').innerText = translations[lang].footer;
+}
 
 let currentLang = 'zh';
 
