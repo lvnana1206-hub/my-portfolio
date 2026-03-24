@@ -8,7 +8,7 @@ const translations = {
         langBtn: "English Version",
         // 身份与定位 (已修正为商务 BD)
         heroName: "吕娜娜 (Nana) 🎀",
-        heroTagline: "AI 产品运营 | 海外商务 BD | 用户增长策略",
+        heroTagline: "AI 产品运营 | 商务 BD | 用户增长策略",
         
         // 标签云
         badge1: "🌈 创新问题解决者",
