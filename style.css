@@ -282,3 +282,79 @@
     /* 注意：具体百分比需要在 HTML 标签里写 style="width: 90%" */
 }
 
+.contact-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    background-color: #ffffff;
+    border: 2px solid #f0f4ff; /* 浅淡的蓝色边框 */
+    border-radius: 50px; /* 胶囊形状 */
+    box-shadow: 4px 4px 0px rgba(255, 182, 193, 0.3); /* 浅粉色硬投影，增加可爱感 */
+    transition: transform 0.2s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.label {
+    color: #666;
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.value {
+    color: #333;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.value:hover {
+    color: #ffb6c1; /* 悬停时变为浅粉色 */
+}
+/* 1. 限制整体容器宽度 */
+.portfolio-content { 
+    max-width: 900px;    /* 你可以根据喜好调整为 800px - 1000px */
+    margin: 0 auto;      /* 关键：让整个容器在页面水平居中 */
+    padding: 0 40px;     /* 给左右留出一点呼吸空间，防止手机端贴边 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 确保子元素在容器内也是居中的 */
+}
+
+/* 2. 优化联系方式容器 */
+.contact-container {
+    display: flex;
+    justify-content: center; /* 内部元素水平居中 */
+    gap: 15px;              /* 缩小两个胶囊之间的间距，让视觉更紧凑 */
+    flex-wrap: wrap;        /* 适配移动端自动换行 */
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* 3. 标签组容器（下方那排黄色标签） */
+.tags-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 800px;       /* 标签组可以比联系方式再稍微收窄一点 */
+}
+.contact-item {
+    padding: 6px 15px; /* 减小内边距，让胶囊看起来更精干 */
+    font-size: 14px;   /* 稍微调小字号，增加“轻产品”的精致感 */
+}
