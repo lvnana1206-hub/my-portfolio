@@ -358,3 +358,83 @@
     padding: 6px 15px; /* 减小内边距，让胶囊看起来更精干 */
     font-size: 14px;   /* 稍微调小字号，增加“轻产品”的精致感 */
 }
+/* =========================================
+   Nana's Portfolio - 布局集中与动画取消补丁
+   状态：针对性强效覆盖，确保原代码完好
+   ========================================= */
+
+/* --- 1. 取消 Email 和 Phone 块的 Reveal (淡入向上) 动画 --- */
+/* 我们强行让联系方式块在加载时就完全可见，不执行偏移动画 */
+.hero-contact-section .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important; /* 彻底移除过渡效果 */
+}
+
+/* 如果你的动画是通过 JS 在特定时间添加 .active 类控制的，
+   上面的代码已经足够在 JS 添加类之前就强制显示。
+   为了万无一失，我们确保不管有没有 .active 类，它们都显示。 */
+.hero-contact-section .contact-item {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+
+/* --- 2. 拉大页边距，让内容集中在中间“黄金视角” --- */
+/* 黄金视角宽度一般在 1000px - 1100px 之间，我们取 1080px */
+
+/* 首先，我们需要找到包裹所有内容的最高级容器。
+   根据你的网页结构，通常是 `main` 标签或者包裹全页面的 `div.container`。
+   这里我们使用一个通用的方法：限制 `body` 的内容最大宽度，并使其居中。
+   这会同时影响导航栏和主要内容区域。 */
+   
+body {
+    max-width: 1080px !important; /* 限制最大宽度，让内容集中 */
+    margin-left: auto !important;  /* 水平居中 */
+    margin-right: auto !important; /* 水平居中 */
+    
+    /* 由于限制了 body 宽度，原本占满全屏的背景色需要加回来。
+       我们给 html 标签加背景色，body 加内容背景色。 */
+    background-color: var(--bg-light) !important; /* html 的背景 */
+}
+
+/* 确保 body 内部有白色背景（如果是白色主题） */
+body {
+    background-color: var(--white) !important;
+    /* 如果你的网页是从头到尾都是 var(--bg-light)，请把上面这行改为： */
+    /* background-color: var(--bg-light) !important; */
+    
+    /* 增加一点内边距，防止内容紧贴限制边缘 */
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* 修正导航栏：因为 body 变窄了，fixed 的导航栏也需要居中且限制宽度 */
+.nav-bar {
+    max-width: 1080px !important; /* 与 body 保持一致 */
+    left: 50% !important;         /* 移动到屏幕中间 */
+    transform: translateX(-50%) !important; /* 真正的水平居中 */
+    width: 100% !important;       /* 在 max-width 范围内占满 */
+}
+
+/* 调整 Section 间距，配合集中的视角 */
+section {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+
+/* --- 3. 移动端适配 (保证在手机上依然好看) --- */
+@media (max-width: 1120px) {
+    body {
+        max-width: 100% !important; /* 手机端不限制最大宽度 */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    .nav-bar {
+        max-width: 100% !important;
+        left: 0 !important;
+        transform: none !important;
+    }
+}
